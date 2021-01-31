@@ -10,14 +10,15 @@ html{
     -moz-user-select: -moz-none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    zoom: 1.6;
+    -ms-zoom: 160%;
 }
 button{
     background-color: #f0f8ff;
     font-family: abel;
     font-weight: bold;
-    border: #a9a9a9;
-    border-width: 20px;
-    border-radius: 10%;
+    border: hsl(0, 0%, 66%);
+    border-radius: 5%;
 }
 #apply{
     height: 40px;
@@ -56,9 +57,12 @@ input, textarea{
     min-width: 250px;
     min-height: 190px;
 }
-#copy, #download {
+#copy, #download, #share {
+    border-width: 5px;
+    border-color: #2f4f4f;
     margin-left: 35%;
     margin-right: 35%;
+    border: 1px solid #000;
 }
 #MaxWanderingTimeSeconds, #MinWanderingTimeSeconds, #FirstWanderTimeSeconds{
     width: 70px;
