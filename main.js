@@ -93,7 +93,7 @@ addEventListener("load", function(){
         }
     }
         if(!txt.includes("null") && txt != ""){
-            config_text=txt;
+            config_text="Version_DoNotEdit=1\n"+txt;
             config.value = config_text;
         }
     }
