@@ -100,6 +100,7 @@ addEventListener("load", function(){
 })
 
 share.addEventListener("click", function() {
+    apply.click();
     var i =  `https://lim10dev.github.io/?EnableMods=${capitalizeFirstLetter( EnableMods.checked.toString() )}&SilenceSounds=${capitalizeFirstLetter(SilenceSounds.checked.toString())}&Task_CanAttackMouse=${capitalizeFirstLetter(Task_CanAttackMouse.checked.toString())}&AttackRandomly=${capitalizeFirstLetter(AttackRandomly.checked.toString())}&UseCustomColors=${capitalizeFirstLetter(UseCustomColors.checked.toString())}&GooseDefaultWhite=${GooseDefaultWhite.value.slice(1)}&GooseDefaultOrange=${GooseDefaultOrange.value.slice(1)}&GooseDefaultOutline=${GooseDefaultOutline.value.slice(1)}&MinWanderingTimeSeconds=${MinWanderingTimeSeconds.value}&MaxWanderingTimeSeconds=${MaxWanderingTimeSeconds.value}&FirstWanderTimeSeconds=${FirstWanderTimeSeconds.value}`;
     navigator.clipboard.writeText(i);
 });
@@ -119,7 +120,7 @@ apply.addEventListener("click", function() {
 MaxWanderingTimeSeconds.addEventListener("change", function() {
     if (MaxWanderingTimeSeconds.value < MinWanderingTimeSeconds.value)
         MaxWanderingTimeSeconds.value = MinWanderingTimeSeconds.value;
-        
+    
     if (MaxWanderingTimeSeconds.value < 1) {
         MaxWanderingTimeSeconds.value = 0;
     } else if (MaxWanderingTimeSeconds.value > 99999){

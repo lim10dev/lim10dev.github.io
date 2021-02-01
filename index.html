@@ -10,14 +10,23 @@
         <title>Desktop Goose Customizer</title>
         <link rel="stylesheet" href="main.css">
         <link rel="icon" href="gooseico.ico">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YR8R36S45J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YR8R36S45J');
+</script>
     </head>
     <body>
         <span id="Settings">
             <input type="checkbox" id="EnableMods"> <label for="EnableMods" title="If checked, downloaded mods can be used.">Enable Mods</label> <br>
             <input type="checkbox" id="SilenceSounds"> <label for="SilenceSounds" title="If checked, there won't be any sounds">Silence Sound (mute goose)</label> <br>
-            <input type="checkbox" id="Task_CanAttackMouse"> <label for="Task_CanAttackMouse" title="If checked, Goose can attack your mouse.">Goose Can Attack Mouse</label> <br>
+            <input type="checkbox" id="Task_CanAttackMouse" checked="true"> <label for="Task_CanAttackMouse" title="If checked, Goose can attack your mouse.">Goose Can Attack Mouse</label> <br>
             <input type="checkbox" id="AttackRandomly"> <label for="AttackRandomly" title="If checked, Goose can attack randomly.">Attack Randomly</label> <br>
-            <input type="checkbox" id="UseCustomColors"> <label for="UseCustomColors" title="If checked, Goose's colors will be the colors you chose.">Use Custom Colors</label> <br><br>
+            <input type="checkbox" id="UseCustomColors" checked="true"> <label for="UseCustomColors" title="If checked, Goose's colors will be the colors you chose.">Use Custom Colors</label> <br><br>
             <div id="CustomColor">
                 <input type="color" id="GooseDefaultWhite" value="#ffffff"> 
                 <label for="GooseDefaultWhite"> Set Goose's Body Color</label> <br>
@@ -43,7 +52,8 @@
             <button id="share">Share</button>
         </span>
         <footer>
-            Desktop Goose by <a target="_blank" href="https://twitter.com/SamNChiet">SamPerson</a>. Desktop Goose Customizer by <a target="_blank" href="https://github.com/lim10dev">lim10dev</a>.
+            Desktop Goose by <a target="_blank" href="https://twitter.com/SamNChiet">SamPerson</a>. Desktop Goose Customizer by <a target="_blank" href="https://github.com/lim10dev">lim10dev</a>.<br>
+            This site uses Google Analytics.
         </footer>
     </body>
     <script src="main.js"></script>
