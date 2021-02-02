@@ -10,8 +10,8 @@ html{
     -moz-user-select: -moz-none;
     -webkit-user-select: none;
     -ms-user-select: none;
-    zoom: 1.6;
-    -ms-zoom: 160%;
+    zoom: 1.45;
+    -ms-zoom: 145%;
 }
 button{
     background-color: #f0f8ff;
@@ -85,4 +85,19 @@ a{
 }
 a:hover{
     text-decoration: underline;
+}
+.goose{
+    align-content: center;
+    text-align: center;
+}
+#goose {
+    margin-top: 5%;
+    padding: 1% 1% 1% 1%;
+    border-radius: 10%;
+    background-color: #2f4f4f;
+    transition: background-color 250ms;
+    box-shadow: #000;
+}
+#goose:hover{
+    background-color: rgb(116, 148, 148);
 }

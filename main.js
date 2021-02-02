@@ -14,6 +14,9 @@ var copy = document.getElementById("copy");
 var success = document.getElementById("success");
 var down = document.getElementById("download");
 var share = document.getElementById("share");
+var goose_body_svg = document.getElementsByClassName("body");
+var  goose_beak_svg = document.getElementsByClassName("beak-foot");
+var goose_svg = document.getElementById("goose");
 
 var apply = document.getElementById("apply");
 var config = document.getElementById("config-text");
@@ -108,6 +111,7 @@ addEventListener("load", function(){
         }
     }
     apply.click();
+    document.activeElement.blur()
 })
 
 share.addEventListener("click", function() {
@@ -153,6 +157,9 @@ apply.addEventListener("click", function() {
     config_text = `Version_DoNotEdit=1\nEnableMods=${capitalizeFirstLetter( EnableMods.checked.toString() )}\nSilenceSounds=${capitalizeFirstLetter(SilenceSounds.checked.toString())}\nTask_CanAttackMouse=${capitalizeFirstLetter(Task_CanAttackMouse.checked.toString())}\nAttackRandomly=${capitalizeFirstLetter(AttackRandomly.checked.toString())}\nUseCustomColors=${capitalizeFirstLetter(UseCustomColors.checked.toString())}\nGooseDefaultWhite=${GooseDefaultWhite.value}\nGooseDefaultOrange=${GooseDefaultOrange.value}\nGooseDefaultOutline=${GooseDefaultOutline.value}\nMinWanderingTimeSeconds=${MinWanderingTimeSeconds.value}\nMaxWanderingTimeSeconds=${MaxWanderingTimeSeconds.value}\nFirstWanderTimeSeconds=${FirstWanderTimeSeconds.value}`;
     config.value = config_text;
     config.focus();
+    goose_body_svg[0].attributes["fill"].value = GooseDefaultWhite.value;
+    goose_body_svg[0].attributes["stroke"].value = GooseDefaultOutline.value
+    goose_beak_svg[0].attributes["fill"].value = goose_beak_svg[1].attributes["fill"].value = GooseDefaultOrange.value
 });
 // Spaghettiest code i've ever seen
 MaxWanderingTimeSeconds.addEventListener("change", function() {
@@ -209,3 +216,4 @@ function download(data, filename, type) {
         }, 0); 
     }
 } // https://stackoverflow.com/questions/13405129/javascript-create-and-save-file/53864791
+
