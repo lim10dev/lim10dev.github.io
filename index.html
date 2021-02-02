@@ -12,8 +12,8 @@
         <link rel="icon" href="gooseico.ico">
         <meta name="author" content="lim10dev">
         <meta name="application-name" content="Desktop Goose Customizer">
-        <meta name="description" content="A tool to customize your Desktop Goose">
-        <meta name="keywords" content="desktop, goose, customizer">
+        <meta name="description" content="A tool to customize your Desktop Goose.">
+        <meta name="keywords" content="desktop, goose, customizer, color, desktop goose customizer, change color">
         <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YR8R36S45J"></script>
     <script>
@@ -33,31 +33,31 @@
             <input type="checkbox" id="UseCustomColors" checked="true"> <label for="UseCustomColors" title="If checked, Goose's colors will be the colors you chose.">Use Custom Colors</label> <br><br>
             <div id="CustomColor">
                 <input type="color" id="GooseDefaultWhite" value="#ffffff"> 
-                <label for="GooseDefaultWhite"> Set Goose's Body Color</label> <br>
+                <label for="GooseDefaultWhite" title="Set Goose's Body color"> Set Goose's Body Color</label> <br>
                 <input type="color" id="GooseDefaultOrange" value="#ffa500">
-                <label for="GooseDefaultOrange"> Set Goose's Beak Color</label> <br>
+                <label for="GooseDefaultOrange" title="Set Goose's Outline color"> Set Goose's Beak Color</label> <br>
                 <input type="color" id="GooseDefaultOutline" value="#d3d3d3"> 
-                <label for="GooseDefaultOutline">Goose's Outline Color</label> 
+                <label for="GooseDefaultOutline" title="Set Goose's Outline color">Goose's Outline Color</label> 
             </div> <br>
             <input type="number" id="MinWanderingTimeSeconds" value="20" max="999999"> 
-            <label for="MinWanderingTimeSeconds">Minimum Wandering Time Seconds</label><br>
+            <label for="MinWanderingTimeSeconds" title="Minimum time before Goose goes to bring a text/image/meme">Minimum Wandering Time Seconds</label><br>
             <input type="number" id="MaxWanderingTimeSeconds" value="40" max="999999">
-            <label for="MaxWanderingTimeSeconds">Maximum Wandering Time Seconds</label><br>
+            <label for="MaxWanderingTimeSeconds" title="Maximum time before Goose goes to bring a text/image/meme">Maximum Wandering Time Seconds</label><br>
             <input type="number" id="FirstWanderTimeSeconds" value="20" max="999999"> 
-            <label for="FirstWanderTimeSeconds">First Wandering Time Seconds</label><br> <br>
-            <button id="apply">Apply settings</button>
+            <label for="FirstWanderTimeSeconds" title="Time before Goose goes to bring a text/image/meme for the first time.">First Wandering Time Seconds</label><br> <br>
+            <button id="apply" title="Apply settings to the textbox">Apply settings</button>
         </span>
         <span id="config-ini">
             <textarea id="config-text" aria-multiline="true" spellcheck="false" readonly=true>
 
             </textarea> <br>
-            <button id="copy">Copy text</button> <br>
-            <button id="download">Download</button> <br>
-            <button id="share">Share</button>
+            <button id="copy" title="Copy your settings (Paste it to config.ini file to use settings)">Copy Settings</button> <br>
+            <button id="download" title="Download your settings (Replace downloaded file with original file to use settings)">Download Settings</button> <br>
+            <button id="share" title="Share your settings with anyone (URL will be copied to clipboard)">Share Settings</button>
         </span>
         <footer>
-            Desktop Goose by <a target="_blank" href="https://twitter.com/SamNChiet">SamPerson</a>. Desktop Goose Customizer by <a target="_blank" href="https://github.com/lim10dev">lim10dev</a>.<br>
-            This site uses Google Analytics.
+            Desktop Goose by <a target="_blank" href="https://twitter.com/SamNChiet" title="@SamNChiet">SamPerson</a>. Desktop Goose Customizer by <a target="_blank" href="https://github.com/lim10dev" title="github.com/lim10dev">lim10dev</a>.<br>
+            This site uses Google Analytics. You can use a <a href="https://github.com/gorhill/ublock#installation" title="uBlock">blocker</a> if you aren't confortable with it.
         </footer>
     </body>
     <script src="main.js"></script>
