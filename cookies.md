@@ -1,6 +1,3 @@
----
-title: Document Center
----
 # COOKIE POLICY
 
 Only usage of the cookies in [lim10dev.github.io](https://lim10dev.github.io) is for saving custom settings. If you don't want any cookies to be used, **don't save your settings**.
