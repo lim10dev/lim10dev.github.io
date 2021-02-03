@@ -10,16 +10,18 @@ var GooseDefaultOutline = document.getElementById("GooseDefaultOutline");
 var MaxWanderingTimeSeconds = document.getElementById("MaxWanderingTimeSeconds");
 var MinWanderingTimeSeconds = document.getElementById("MinWanderingTimeSeconds");
 var FirstWanderTimeSeconds = document.getElementById("FirstWanderTimeSeconds");
-var copy = document.getElementById("copy");
+var config = document.getElementById("config-text");
 var success = document.getElementById("success");
-var down = document.getElementById("download");
-var share = document.getElementById("share");
 var goose_body_svg = document.getElementsByClassName("body");
 var  goose_beak_svg = document.getElementsByClassName("beak-foot");
 var goose_svg = document.getElementById("goose");
 
 var apply = document.getElementById("apply");
-var config = document.getElementById("config-text");
+var down = document.getElementById("download");
+var share = document.getElementById("share");
+var copy = document.getElementById("copy");
+var save = document.getElementById("save");
+var load = document.getElementById("load");
 var config_text = "Version_DoNotEdit=1\nEnableMods=False\nSilenceSounds=False\nTask_CanAttackMouse=True\nAttackRandomly=False\nUseCustomColors=True\nGooseDefaultWhite=#ffffff\nGooseDefaultOrange=#ffa500\nGooseDefaultOutline=#d3d3d3\nMinWanderingTimeSeconds=20\nMaxWanderingTimeSeconds=40\nFirstWanderTimeSeconds=20";
 config.value = config_text;
 } // Setup End
@@ -120,22 +122,29 @@ share.addEventListener("click", function() {
         var i =  `https://lim10dev.github.io/?EnableMods=${capitalizeFirstLetter( EnableMods.checked.toString() )}&SilenceSounds=${capitalizeFirstLetter(SilenceSounds.checked.toString())}&Task_CanAttackMouse=${capitalizeFirstLetter(Task_CanAttackMouse.checked.toString())}&AttackRandomly=${capitalizeFirstLetter(AttackRandomly.checked.toString())}&UseCustomColors=${capitalizeFirstLetter(UseCustomColors.checked.toString())}&GooseDefaultWhite=${GooseDefaultWhite.value.slice(1)}&GooseDefaultOrange=${GooseDefaultOrange.value.slice(1)}&GooseDefaultOutline=${GooseDefaultOutline.value.slice(1)}&MinWanderingTimeSeconds=${MinWanderingTimeSeconds.value}&MaxWanderingTimeSeconds=${MaxWanderingTimeSeconds.value}&FirstWanderTimeSeconds=${FirstWanderTimeSeconds.value}`;
         navigator.clipboard.writeText(i);
     }
+    share.focus();
 });
 
 // Function to capitalize first letter of a word
 function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
-
-  function getKey(e)
-  {
-      window.alert("The key code is: " + e.keyCode);
-  }
   
-  document.onkeyup = function(e){
+document.onkeyup = function(e){
         if(e.keyCode == 13)
         apply.click();  
-  };
+};
+
+save.addEventListener("click", function(){
+    localStorage.setItem("settings", `?EnableMods=${capitalizeFirstLetter( EnableMods.checked.toString() )}&SilenceSounds=${capitalizeFirstLetter(SilenceSounds.checked.toString())}&Task_CanAttackMouse=${capitalizeFirstLetter(Task_CanAttackMouse.checked.toString())}&AttackRandomly=${capitalizeFirstLetter(AttackRandomly.checked.toString())}&UseCustomColors=${capitalizeFirstLetter(UseCustomColors.checked.toString())}&GooseDefaultWhite=${GooseDefaultWhite.value.slice(1)}&GooseDefaultOrange=${GooseDefaultOrange.value.slice(1)}&GooseDefaultOutline=${GooseDefaultOutline.value.slice(1)}&MinWanderingTimeSeconds=${MinWanderingTimeSeconds.value}&MaxWanderingTimeSeconds=${MaxWanderingTimeSeconds.value}&FirstWanderTimeSeconds=${FirstWanderTimeSeconds.value}`);
+    alert("Your settings are saved sucesfully in browser local storage.");
+});
+
+load.addEventListener("click", function(){
+    if(localStorage.getItem("settings") != null){
+        document.location.href = "https://lim10dev.github.io/" + localStorage.getItem("settings");
+    }
+});
 
 // when apply click
 apply.addEventListener("click", function() {

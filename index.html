@@ -14,15 +14,6 @@
         <meta name="application-name" content="Desktop Goose Customizer">
         <meta name="description" content="A tool to customize your Desktop Goose.">
         <meta name="keywords" content="desktop, goose, customizer, color, desktop goose customizer, change color">
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YR8R36S45J"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-YR8R36S45J');
-</script>
     </head>
     <body>
         <span id="Settings">
@@ -40,24 +31,31 @@
                 <label for="GooseDefaultOutline" title="Set Goose's Outline color">Goose's Outline Color</label> 
             </div> <br>
             <input type="number" id="MinWanderingTimeSeconds" value="20" max="999999"> 
-            <label for="MinWanderingTimeSeconds" title="Minimum time before Goose goes to bring a text/image/meme">Minimum Wandering Time Seconds</label><br>
+            <label for="MinWanderingTimeSeconds" title="Minimum time before Goose goes to bring a text/image/meme">Minimum Wandering Time (Seconds)</label><br>
             <input type="number" id="MaxWanderingTimeSeconds" value="40" max="999999">
-            <label for="MaxWanderingTimeSeconds" title="Maximum time before Goose goes to bring a text/image/meme">Maximum Wandering Time Seconds</label><br>
+            <label for="MaxWanderingTimeSeconds" title="Maximum time before Goose goes to bring a text/image/meme">Maximum Wandering Time (Seconds)</label><br>
             <input type="number" id="FirstWanderTimeSeconds" value="20" max="999999"> 
-            <label for="FirstWanderTimeSeconds" title="Time before Goose goes to bring a text/image/meme for the first time.">First Wandering Time Seconds</label><br> <br>
+            <label for="FirstWanderTimeSeconds" title="Time before Goose goes to bring a text/image/meme for the first time.">First Wander Time (Seconds)</label><br> <br>
             <button id="apply" title="Apply settings to the textbox">Apply settings</button>
         </span>
-        <span id="config-ini">
+        <div id="config-ini">
             <textarea id="config-text" aria-multiline="true" spellcheck="false" readonly=true>
 
             </textarea> <br>
-            <button id="copy" title="Copy your settings (Paste it to config.ini file to use settings)">Copy Settings</button> <br>
-            <button id="download" title="Download your settings (Replace downloaded file with original file to use settings)">Download Settings</button> <br>
-            <button id="share" title="Share your settings with anyone (URL will be copied to clipboard)">Share Settings</button>
-        </span>
+            <ul id="buttons"> 
+                <li> <button id="copy" title="Copy your settings (Paste it to config.ini file to use settings)">Copy Settings</button> <br></li>
+                <li> <button id="download" title="Download your settings (Replace downloaded file with original file to use settings)">Download Settings</button> <br></li>
+                <li> <button id="share" title="Share your settings with anyone (URL will be copied to clipboard)">Share Settings</button> <br></li>
+            </ul>
+        </div>
+        <div id="save-load">
+            <button id="save" title="Save your settings to use them later">Save settings</button> <br>
+            <button id="load" title="Load your saved settings">Load settings</button>
+        </div>
         <footer>
             Desktop Goose by <a target="_blank" href="https://twitter.com/SamNChiet" title="@SamNChiet">SamPerson</a>. Desktop Goose Customizer by <a target="_blank" href="https://github.com/lim10dev" title="github.com/lim10dev">lim10dev</a>.<br>
-            This site uses Google Analytics. You can use a <a href="https://github.com/gorhill/ublock#installation" title="uBlock">blocker</a> if you aren't confortable with it.
+            This site uses cookies just to save settings, 
+            <a href="cookies.md" title="Cookiee uwu">Cookie Policy</a>
         </footer>
         <div class="goose">
             <svg id="goose" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="108.01412" height="89.93734" viewBox="0,0,108.01412,89.93734">    

@@ -48,6 +48,7 @@ input, textarea{
 }
 #config-ini{
     float: right;
+    text-align: center;
 }
 #config-text{
     width: 250px;
@@ -57,14 +58,23 @@ input, textarea{
     min-width: 250px;
     min-height: 190px;
 }
-#copy, #download, #share {
+#buttons{
+    list-style-type: none;
+    margin-right: 20%;
+}
+#copy, #download, #share, #save, #load {
     border-width: 5px;
     border-color: #2f4f4f;
-    margin-left: 25%;
+    /*margin-left: 25%;*/
     border: 1px solid #000;
 }
 #MaxWanderingTimeSeconds, #MinWanderingTimeSeconds, #FirstWanderTimeSeconds{
     width: 70px;
+}
+#save-load{
+    background-color: rgb(71, 109, 109);
+    border-radius: 5%;
+    float: right;
 }
 footer{
     -moz-user-select: text;
