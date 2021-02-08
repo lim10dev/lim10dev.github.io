@@ -10,8 +10,8 @@ html{
     -moz-user-select: -moz-none;
     -webkit-user-select: none;
     -ms-user-select: none;
-    zoom: 1.45;
-    -ms-zoom: 145%;
+    font-size: 20px;
+    zoom: 125%;
 }
 button{
     background-color: #f0f8ff;
@@ -22,6 +22,8 @@ button{
 }
 #apply{
     height: 40px;
+    font-size: 18px;
+    padding: 3 3;
 }
 button:hover, input:hover, label:hover, button:focus, input:focus, label:focus{
     background-color: #ffffff;
@@ -32,6 +34,7 @@ button:hover, input:hover, label:hover, button:focus, input:focus, label:focus{
     background-color: #f0f8ff;
 }
 input, textarea{
+    user-select: text;
     -moz-user-select: -moz-all;
     -webkit-user-select: all;
     -ms-user-select: all;
@@ -48,25 +51,36 @@ input, textarea{
 }
 #config-ini{
     float: right;
-    text-align: center;
+}
+#msg{
+    text-align: left !important;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    user-select: text;
+    -moz-user-select: text; 
+    -webkit-user-select: text;
+    font-size: 10px;
 }
 #config-text{
-    width: 250px;
-    height: 190px;
-    max-width: 250px;
-    max-height: 190px;
-    min-width: 250px;
-    min-height: 190px;
+    font-size: 18px;
+    max-width: 300px;
+    max-height: 280px;
+    min-width: 300px;
+    min-height: 280px;
 }
 #buttons{
+    text-align: center;
     list-style-type: none;
     margin-right: 20%;
+    font-size: 20px;
 }
 #copy, #download, #share, #save, #load {
     border-width: 5px;
     border-color: #2f4f4f;
     /*margin-left: 25%;*/
     border: 1px solid #000;
+    font-size: 20px;
+    padding: 5;
 }
 #MaxWanderingTimeSeconds, #MinWanderingTimeSeconds, #FirstWanderTimeSeconds{
     width: 70px;
@@ -77,6 +91,7 @@ input, textarea{
     float: right;
 }
 footer{
+    user-select: text;
     -moz-user-select: text;
     -webkit-user-select: text;
     -ms-user-select:text;
@@ -85,7 +100,7 @@ footer{
     left: 0;
     bottom: 0;
     width: 100%;
-    font-size: 10px;
+    font-size: 15px;
     text-align: center;
 }
 a{
@@ -99,6 +114,7 @@ a:hover{
 .goose{
     align-content: center;
     text-align: center;
+    user-select: text;
 }
 #goose {
     margin-top: 5%;
