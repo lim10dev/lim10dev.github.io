@@ -10,11 +10,12 @@
         <title>Desktop Goose Customizer</title>
         <link rel="stylesheet" href="main.css">
         <link rel="icon" href="gooseico.ico">
-        <meta id="colorEmbed" name="theme-color" content="#2f4f4f">
         <script>
             const urlParams = new URLSearchParams(window.location.search);
                 if(urlParams != "")
-            document.getElementById("colorEmbed").attributes["content"] = urlParams.get("GooseDefaultWhite")
+                var embedColor = document.createElement("meta")
+                embedColor.setAttribute("name", "theme-color")
+                embedColor.setAttribute("content", urlParams.get("GooseDefaultWhite"))
         </script>
         <meta name="author" content="lim10dev">
         <meta name="application-name" content="Desktop Goose Customizer">
