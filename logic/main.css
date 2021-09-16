@@ -1,0 +1,109 @@
+html{
+    padding: 8px 8px 8px 8px;
+}
+body{
+    color: #f6f4fd;
+    background-color: #323048;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 1s;
+}
+.dogru{
+    color: #000a00;
+    background-color: #96ffa6;
+}
+.yanlis{
+    color: #ff9797;
+    background-color: #a50000;
+}
+.hata{
+    color: #e7e4fc;
+    background-color: #121026;
+}
+button{
+    background-color: #f0f8ff;
+    font-weight: bold;
+    border: hsl(0, 0%, 66%);
+    border-radius: 5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px 5px 5px 0px;
+}
+button:hover{
+    cursor: hand;
+}
+select{
+    background-color: #f0f8ff;
+    font-weight: bold;
+    border: hsl(0, 0%, 66%);
+    border-radius: 5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px 5px 5px 0px;
+    height: 30px;
+    width: auto;
+    cursor: pointer;
+}
+table, th, td {
+    border:3px solid #f0f8ff;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 1px 1px 1px 1px;
+    background-color: #4a7979;
+}
+th, td {
+    padding: 15px;
+}
+footer{
+    position: fixed;
+    text-decoration: none;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+}
+.noselect{
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+}
+label{
+    font-size: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+button:hover, input:hover, label:hover, button:focus, input:focus, label:focus{
+    background-color: #ffffff;
+    cursor: pointer;
+    color: black;
+}
+a{
+    color: #f3f4fd;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 1s;
+}
+a:hover{
+    text-decoration: underline;
+}
+a.dogru{
+    color: #000a00;
+    background-color: #96ffa6;
+}
+a.yanlis{
+    color: #ff9797;
+    background-color: #a50000;
+}
+a.hata{
+    color: #e7e4fc;
+    background-color: #121026;
+}
+#giris {
+    width: calc(100% - 8px);
+    height: 30px;
+}
+#dil{
+    float: right;
+    margin: 5px 0px 0px 0px;
+}

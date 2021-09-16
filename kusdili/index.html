@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+    <html lang="tr">
+        <head>
+            <link rel="stylesheet" href="main.css">
+            <link rel="shortcut icon" href="favicon.ico">
+            <meta charset="UTF-8">
+            <title>Kuş Dili Çeviricisi</title>
+        </head>
+        <body>
+            <textarea id="Cevrilen" title="Çevrilecek metin" aria-multiline="true" spellcheck="false" placeholder="Buraya çevrilecek metninizi yazınız..."></textarea>
+            <br>
+            <button id="Cevir" title="Metninizi çevirin">Çevir</button> 
+            <button id="Ters" title="Metinlerin yerlerini değiştirin"> <img src="cevir.png"></button>
+            <!--
+                ## Çeviri yerlerini değiştirme butonu için resim kaynağı:
+                https://www.google.com/search?q=return+icon&safe=strict&sxsrf=ALeKk00yVGTEwEqNROevuV5wgICSFfd9AA:1613655959218&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjdlvTxyPPuAhUuzIUKHW4KBRUQ_AUoAXoECBIQAw&biw=1366&bih=635#imgrc=JbdEeHdKfHZr8M 
+            -->
+            <select id="CevirMod" title="Çeviri seçimi">
+                <option value="Turkce">Türkçe'den Kuş Dili'ne</option>
+                <option value="KusDil">Kuş Dili'nden Türkçe'ye</option>
+            </select>
+            <select id="CevirHarf" title=" Çeviride kullanılacak harf (Hırsız dili için ' lf ' harfini seçin) ">
+                <option value="g">' g ' Harfi Kullanılarak</option>
+                <option value="b">' b ' Harfi Kullanılarak</option>
+                <option value="c">' c ' Harfi Kullanılarak</option>
+                <option value="f">' f ' Harfi Kullanılarak</option>
+                <option value="lf" title="Hırsız dili">' lf ' (Hırsız Dili)</option>
+            </select> <br>
+            <textarea id="Ceviri" aria-multiline="true" readonly title="Çeviri sonucu" placeholder="&quot;Çevir&quot; butonuna bastıktan sonra metniniz burada gözükecektir."></textarea>
+            <br>
+            <button id="Kopyala" disabled title="Çevirinizi kopyalayın">Çeviriyi Kopyala</button>
+            <input id="Kaydet-Hatirla" type="checkbox"> <label for="Kaydet-Hatirla" title="Tercihleriniz sonraki gelişleriniz için saklanır">Seçimlerimi Hatırla</label>
+
+            <footer>
+                <a href="../" title="lim10dev.github.io">lim10dev</a> tarafından Kuş Dili Çeviricisi.<br>
+                <a target="blank" href="https://github.com/lim10dev/kusdili/tree/main/WEB" title="github.com/lim10dev/kusdili">Kaynak Kodu</a>
+                - Discord: <a href="#" onclick="navigator.clipboard.writeText('LIM10#5919'); alert('Discord etiketi panoya kopyalandı.')" title="@588033698130165765">LIM10#5919</a>
+            </footer>
+            <script src="main.js"></script>
+        </body>
+    </html>

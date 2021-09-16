@@ -1,0 +1,22 @@
+@font-face {
+    font-family: abel;
+    src: url("Abel-Regular.ttf");
+}
+html{
+    font-family: abel;
+    color: wheat;
+    background-color: black;
+}
+a{
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+}
+a:hover{
+    text-decoration: underline;
+}
+#limg{
+    height: 100px;
+    float: right;
+}

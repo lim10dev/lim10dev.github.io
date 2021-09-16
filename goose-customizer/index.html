@@ -1,0 +1,77 @@
+<html>
+    <!--
+        Desktop Goose Customizer by lim10dev.
+        github.com/lim10dev
+        lim10dev.itch.io
+        
+        Spaghetti right here:
+    -->
+    <head>
+        <title>Desktop Goose Customizer</title>
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" href="gooseico.ico">
+        <meta name="theme-color" content="#2f4f4f">
+        <meta name="author" content="lim10dev">
+        <meta name="application-name" content="Desktop Goose Customizer">
+        <meta name="description" content="A tool to customize your Desktop Goose.">
+        <meta name="keywords" content="desktop, goose, customizer, color, desktop goose customizer, change color">
+    </head>
+    <body>
+        <span id="Settings">
+            <input type="checkbox" id="EnableMods"> <label for="EnableMods" title="If checked, downloaded mods can be used.">Enable Mods</label> <br>
+            <input type="checkbox" id="SilenceSounds"> <label for="SilenceSounds" title="If checked, there won't be any sounds">Silence Sound (mute goose)</label> <br>
+            <input type="checkbox" id="Task_CanAttackMouse" checked="true"> <label for="Task_CanAttackMouse" title="If checked, Goose can attack your mouse.">Goose Can Attack Mouse</label> <br>
+            <input type="checkbox" id="AttackRandomly"> <label for="AttackRandomly" title="If checked, Goose can attack randomly.">Attack Randomly</label> <br>
+            <input type="checkbox" id="UseCustomColors" checked="true"> <label for="UseCustomColors" title="If checked, Goose's colors will be the colors you chose.">Use Custom Colors</label> <br><br>
+            <div id="CustomColor">
+                <input type="color" id="GooseDefaultWhite" value="#ffffff"> 
+                <label for="GooseDefaultWhite" title="Set Goose's Body color"> Set Goose's Body Color</label> <br>
+                <input type="color" id="GooseDefaultOrange" value="#ffa500">
+                <label for="GooseDefaultOrange" title="Set Goose's Beak & Foot color"> Set Goose's Beak and Foot Color</label> <br>
+                <input type="color" id="GooseDefaultOutline" value="#d3d3d3"> 
+                <label for="GooseDefaultOutline" title="Set Goose's Outline color">Goose's Outline Color</label> 
+            </div> <br>
+            <input type="number" id="MinWanderingTimeSeconds" value="20" max="999999"> 
+            <label for="MinWanderingTimeSeconds" title="Minimum time before Goose goes to bring a text/image/meme">Minimum Wandering Time (Seconds)</label><br>
+            <input type="number" id="MaxWanderingTimeSeconds" value="40" max="999999">
+            <label for="MaxWanderingTimeSeconds" title="Maximum time before Goose goes to bring a text/image/meme">Maximum Wandering Time (Seconds)</label><br>
+            <input type="number" id="FirstWanderTimeSeconds" value="20" max="999999"> 
+            <label for="FirstWanderTimeSeconds" title="Time before Goose goes to bring a text/image/meme for the first time.">First Wander Time (Seconds)</label><br> <br>
+            <button id="apply" title="Apply settings to the textbox">Apply settings</button>
+        </span>
+        <div id="config-ini">
+            <textarea id="config-text" aria-multiline="true" spellcheck="false" readonly=true>
+
+            </textarea> <br>
+            <ul id="buttons"> 
+                <li> <button id="copy" title="Copy your settings (Paste it to config.ini file to use settings)">Copy Settings</button> <br></li>
+                <li> <button id="download" title="Download your settings (Replace downloaded file with original file to use settings)">Download Settings</button> <br></li>
+                <li> <button id="share" title="Share your settings with anyone (URL will be copied to clipboard)">Share Settings</button> <br></li>
+            </ul>
+            <div id="msg" >Looks like javascript is turned off for this page. </div>
+        </div>
+        <div id="save-load">
+            <button id="save" title="Save your settings to use them later">Save settings</button> <br>
+            <button id="load" title="Load your saved settings">Load settings</button>
+        </div>
+        <footer>
+            Desktop Goose by <a target="_blank" href="https://twitter.com/SamNChiet" title="@SamNChiet">SamPerson</a>. Desktop Goose Customizer by <a href="../" title="lim10dev.github.io">lim10dev</a>.<br>
+            This site uses cookies just to save settings, 
+            <a href="https://github.com/lim10dev/lim10dev.github.io/blob/main/cookies.md#cookie-policy" title="Cookiee uwu">Cookie Policy</a>
+        </footer>
+        <div class="goose" style="font-size: 3px;">
+            <svg id="goose" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="108.01412" height="89.93734" viewBox="0,0,108.01412,89.93734">    
+                <g transform="translate(-185.78809,-127.4229)">
+                    <g data-paper-data="{&quot;isPaintingLayer&quot;:true}" fill-rule="nonzero" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" style="mix-blend-mode: normal">
+                        <path class="beak-foot" d="M254.29987,211.46117c-2.52217,3.12589 -4.96169,5.76001 -8.50836,5.89503c-2.65921,0.10124 -6.58323,-1.72077 -8.10231,-2.94646c-3.54511,-2.86043 -2.84135,-9.61326 1.57189,-15.08286c4.41324,-5.4696 11.28981,-3.6082 14.83492,-0.74777c3.54511,2.86043 4.6171,7.41246 0.20387,12.88206z" fill="#ffa500" stroke="none" stroke-width="0"/>
+                        <path class="body" d="M230.81759,141.5365c0.78672,0.02694 -0.53847,16.55095 0.40497,16.60273c9.81076,0.53847 27.28247,2.27888 35.5171,2.27888c4.47066,0 7.8225,0.04447 12.14329,2.19778c4.32079,2.15331 13.91927,6.19637 13.91927,10.79077c0,8.1204 -1.34478,23.99172 -10.9889,28.58108c-8.86635,4.21925 -17.24677,3.74569 -24.95446,3.42889c-9.50432,-0.39065 -18.36706,-1.3056 -30.45034,-2.07683c-2.24927,-0.28357 -4.69579,-0.43788 -5.67847,-0.75227c-1.64904,-0.52759 -2.58793,-2.30524 -3.96027,-3.36087c-6.36934,-4.8994 -12.04023,-9.13909 -12.89596,-17.58464c-0.27476,-2.71176 -0.85366,-7.57159 -0.87848,-10.58399c0,0 2.68082,-11.16952 3.99116,-11.9132c0.57383,-0.32567 -1.68143,-1.88618 -3.07787,-4.13674c-2.56486,-4.13366 -6.7305,-10.5953 -6.16894,-16.00943c0.59026,-5.69085 10.856,-8.73579 13.42724,-10.57574c0.83449,-0.59714 7.9013,-0.43752 11.91954,2.43689c5.29823,3.79004 7.73112,10.6767 7.73112,10.6767z" fill="#ffffff" stroke="#d3d3d3" stroke-width="2"/>
+                        <path class="beak-foot" d="M208.13219,146.11756c0,5.15865 -5.1222,7.14279 -10.9889,7.14279c-5.8667,0 -11.3552,-1.25154 -11.3552,-6.41019c0,-5.15865 4.7559,-8.97427 10.6226,-8.97427c5.8667,0 11.7215,3.08302 11.7215,8.24167z" fill="#ffa500" stroke="none" stroke-width="0"/>
+                        <path class="eyes-ignore" d="M207.59116,135.01092c0,1.77297 -1.20695,2.74352 -3.46346,2.74352c-1.1671,0 -2.06433,-1.16238 -2.80886,-1.77894c-1.11741,-0.92535 -1.06849,-2.63484 0.21291,-3.31521c1.13507,-0.60267 1.77754,-1.17078 3.06269,-1.17078c2.25651,0 2.99673,1.74844 2.99673,3.5214z" fill="#000000" stroke="none" stroke-width="0"/>
+                        <path class="eyes-ignore" d="M207.81978,143.14988c0,2.12415 -1.44602,3.28694 -4.14948,3.28694c-1.39828,0 -2.47323,-1.39261 -3.36523,-2.1313c-1.30934,-1.08428 -0.5464,-3.57463 0.95508,-4.37186c0.78135,-0.41486 1.95532,-1.00268 2.96932,-1.00268c2.70346,0 3.59031,2.09475 3.59031,4.2189z" fill="#000000" stroke="none" stroke-width="0"/>
+                    </g>
+                </g>
+            </svg> <br> 
+        </div> <br> <br>
+    </body>
+    <script src="main.js"></script>
+</html>

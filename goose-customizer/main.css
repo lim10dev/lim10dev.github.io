@@ -1,0 +1,129 @@
+@font-face{
+    src: url("../Abel-Regular.ttf");
+    font-family: abel;
+}
+html{
+    font-family: abel;
+    color: #f5deb3;
+    background-color: #2f4f4f;
+    user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    font-size: 20px;
+    zoom: 125%;
+}
+button{
+    background-color: #f0f8ff;
+    font-family: abel;
+    font-weight: bold;
+    border: hsl(0, 0%, 66%);
+    border-radius: 5%;
+}
+#apply{
+    height: 40px;
+    font-size: 18px;
+    padding: 3 3;
+}
+button:hover, input:hover, label:hover, button:focus, input:focus, label:focus{
+    background-color: #ffffff;
+    cursor: pointer;
+    color: black;
+}
+#button:target{
+    background-color: #f0f8ff;
+}
+input, textarea{
+    user-select: text;
+    -moz-user-select: -moz-all;
+    -webkit-user-select: all;
+    -ms-user-select: all;
+    background-color: black;
+    color: white;
+}
+
+#CustomColor, #config-ini{
+    background-color: rgb(71, 109, 109);
+    border-radius: 5%;
+}
+#settings{
+    float: left;
+}
+#config-ini{
+    float: right;
+}
+#msg{
+    text-align: left !important;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    user-select: text;
+    -moz-user-select: text; 
+    -webkit-user-select: text;
+    font-size: 10px;
+}
+#config-text{
+    font-size: 18px;
+    max-width: 300px;
+    max-height: 280px;
+    min-width: 300px;
+    min-height: 280px;
+}
+#buttons{
+    text-align: center;
+    list-style-type: none;
+    margin-right: 20%;
+    font-size: 20px;
+}
+#copy, #download, #share, #save, #load {
+    border-width: 5px;
+    border-color: #2f4f4f;
+    /*margin-left: 25%;*/
+    border: 1px solid #000;
+    font-size: 20px;
+    padding: 5;
+}
+#MaxWanderingTimeSeconds, #MinWanderingTimeSeconds, #FirstWanderTimeSeconds{
+    width: 70px;
+}
+#save-load{
+    background-color: rgb(71, 109, 109);
+    border-radius: 5%;
+    float: right;
+}
+footer{
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select:text;
+    position: fixed;
+    text-decoration: none;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #f5deb3;
+}
+a:hover{
+    text-decoration: underline;
+}
+.goose{
+    align-content: center;
+    text-align: center;
+    user-select: text;
+}
+#goose {
+    margin-top: 5%;
+    padding: 1% 1% 1% 1%;
+    border-radius: 10%;
+    background-color: #2f4f4f;
+    transition: background-color 250ms;
+    box-shadow: #000;
+}
+#goose:hover{
+    background-color: rgb(116, 148, 148);
+}

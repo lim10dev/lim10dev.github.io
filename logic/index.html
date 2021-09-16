@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" href="favicon.ico">
+        <title>Mantık Hesaplayıcısı</title>
+    </head>
+    <body>
+        <h1 id="logicTitle">Mantık Hesaplayıcısı</h1>
+        <input type="text" id="giris" placeholder="Hesaplanacak mantığı yazın..." value=""> <br/>
+        <select id="dil">
+            <option value="tr-TR">&#x1F1F9&#x1F1F7 Türkçe</option>
+            <option value="en-EN">&#x1F1EC&#x1F1E7 English</option>
+        </select>
+        <select id="mod" hidden>
+            <option value="deger-hesap">Doğruluk Değeri Hesapla</option>
+            <option value="tablo-hesap" disabled>Doğruluk Tablosu Hesapla</option>
+        </select>
+        <button id="hesapla" class="noselect">Hesapla</button>
+        <div id="sonuclar">
+            <h2 id="sonucHeader">Hesapla butonuna bastıktan sonra değeriniz hesaplanacaktır.</h2>
+            <h3 id="sonucYazili"> </h3>
+        </div>
+        <div id="degiskenDegerler">
+          
+        </div>
+        <hr>
+        <div id="operatorler">
+            <span class="ve"></span><input type="text" id="ve"> <br/>
+            <span class="veya"></span><input type="text" id="veya"> <br/>
+            <span class="yada"></span><input type="text" id="yada"> <br/>
+            <span class="ise"></span><input type="text" id="ise"> <br/>
+            <span class="ancak"></span><input type="text" id="ancak"> <br/>
+            <span class="degil"></span><input type="text" id="degil">
+        </div>
+        <footer>
+            <span id="madeby"></span><a href="../">lim10dev</a><span id="tarafndan"></span>
+        </footer>
+        <script src="main.js"></script>
+    </body>
+</html>

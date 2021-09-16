@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="main.css">
+        <title>lim10dev</title>
+    </head>
+    <body>
+        <img id="limg" src="lim10dev.png">
+        <h1 id="selam">Hey there! &#x1F44B </h1>
+        <h2 id="benlim10">I'm lim10dev and i love lemons!<br></h2>
+        <hr>
+        <h2 id="webler">Here are my web projects:</h2>
+        <ul>
+            <li><a href="goose-customizer/">Desktop Goose Customizer</a></li>
+            <li><a href="kusdili/">Kuş Dili Çevirici</a></li>
+            <li><a id="mantik" href="logic/">Logic Calculator</a></li>
+        </ul>
+        <hr> &#x1F517
+        | <a target="_blank" href="https://www.youtube.com/channel/UCT4eI71R1QwvstWb28Y8vxw/">YouTube</a> |
+        <a target="_blank" href="https://github.com/lim10dev">GitHub</a> |
+        <a target="_blank" href="https://discord.gg/guchhN5wcn">Discord</a> |
+        <a target="_blank" href="https://twitter.com/lim10dev">Twitter</a> |
+        <a target="_blank" href="https://lim10dev.itch.io/">Itch</a> |
+
+        <script>
+            var selam = document.getElementById("selam");
+            var benlim10 = document.getElementById("benlim10");
+            var webler = document.getElementById("webler");
+            var mantik = document.getElementById("mantik");
+
+            var userLang = navigator.language;
+
+            if(userLang == "tr-TR"){
+                selam.innerText = "Merhaba! 👋";
+                benlim10.innerText = "Ben lim10dev ve limonları severim!";
+                webler.innerText = "İşte internet projelerim:";
+                mantik.innerText = "Mantık Hesaplayıcısı";
+            }
+
+        </script>
+    </body>
+</html>
