@@ -89,15 +89,12 @@ a:hover{
 }
 a.dogru{
     color: #000a00;
-    background-color: #96ffa6;
 }
 a.yanlis{
     color: #ff9797;
-    background-color: #a50000;
 }
 a.hata{
     color: #e7e4fc;
-    background-color: #121026;
 }
 #giris {
     width: calc(100% - 8px);

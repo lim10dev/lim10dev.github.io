@@ -173,6 +173,7 @@ function degiskenleriDegistir(txt = ""){
 
 giris.oninput = function(){
 
+    giris.value = giris.value.toLowerCase();
     document.body.classList.remove("dogru", "yanlis", "hata");
     link.classList.remove("dogru", "yanlis", "hata");
     sonucHeader.innerText = dilKelimeAl("durumDflt", dil.value);
