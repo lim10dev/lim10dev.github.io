@@ -11,7 +11,7 @@
         <meta name="keywords" content="logic, mantık, calculate, maths, math logic, mantıklar, 9, mantık hesap, hesap">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="../logiccalcico.png" property="og:image">
-        <title>Mantık Hesaplayıcısı</title>
+        <title>Logic Calculator</title>
     </head>
     <body>
         <h1 id="logicTitle">Logic Calculator</h1>
@@ -24,22 +24,30 @@
             <option value="deger-hesap">Doğruluk Değeri Hesapla</option>
             <option value="tablo-hesap" disabled>Doğruluk Tablosu Hesapla</option>
         </select>
-        <button id="hesapla" class="noselect">Hesapla</button>
+        <div class="noselect">
+            <button id="hesapla">Hesapla</button><br/>
+            
+            <button id="degil">Değil</button>
+            <button id="ve">Ve</button>
+            <button id="veya">Veya</button>
+            <button id="yada">Ya da</button>
+            <button id="ise">İse</button>
+            <button id="ancak">Ancak ve ancak</button><br/>
+            
+            <button id="1">1</button>
+            <button id="0">0</button>
+            <button id="pBut">p</button>
+            <button id="qBut">q</button>
+            <button id="rBut">r</button>
+        </div>
+
         <div id="sonuclar">
             <h2 id="sonucHeader">Hesapla butonuna bastıktan sonra değeriniz hesaplanacaktır.</h2>
             <h3 id="sonucYazili"> </h3>
         </div>
+        <hr>
         <div id="degiskenDegerler">
           
-        </div>
-        <hr>
-        <div id="operatorler">
-            <span class="ve"></span><input type="text" id="ve"> <br/>
-            <span class="veya"></span><input type="text" id="veya"> <br/>
-            <span class="yada"></span><input type="text" id="yada"> <br/>
-            <span class="ise"></span><input type="text" id="ise"> <br/>
-            <span class="ancak"></span><input type="text" id="ancak"> <br/>
-            <span class="degil"></span><input type="text" id="degil">
         </div>
         <footer>
             <span id="madeby"></span><a href="../">lim10dev</a><span id="tarafndan"></span>
