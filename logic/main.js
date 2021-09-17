@@ -28,6 +28,9 @@ var sifirButon = document.getElementById("0");
 var pButon = document.getElementById("pBut");
 var qButon = document.getElementById("qBut");
 var rButon = document.getElementById("rBut");
+var parantezAc = document.getElementById("parantezAc");
+var parantezKapat = document.getElementById("parantezKapat");
+var sil = document.getElementById("sil");
 
 // Değer Değişmeleri / Values
 var degisDegisenler = ["[", "]", "(1)", "(0)", "1"+degil, "0"+degil, "11", "00", "10", "01",  "1"+ve+"1", "1"+ve+"0", "0"+ve+"1", "0"+ve+"0", "1"+veya+"1", "1"+veya+"0", "0"+veya+"1", "0"+veya+"0", "1"+yada+"1", "1"+yada+"0", "0"+yada+"1", "0"+yada+"0", "1"+ancak+"1", "1"+ancak+"0", "0"+ancak+"1", "0"+ancak+"0", "1"+ise+"1", "1"+ise+"0", "0"+ise+"1", "0"+ise+"0"];
@@ -97,6 +100,18 @@ birButon.onclick = function(){
 }
 sifirButon.onclick = function(){
     giris.value += "0";
+    giris.oninput();
+}
+parantezAc.onclick = function(){
+    giris.value += "(";
+    giris.oninput();
+}
+parantezKapat.onclick = function(){
+    giris.value += ")";
+    giris.oninput();
+}
+sil.onclick = function(){
+    giris.value = giris.value.substring(0, giris.value.length-1);
     giris.oninput();
 }
 
