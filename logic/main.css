@@ -21,8 +21,10 @@ body{
 }
 button{
     background-color: #f0f8ff;
+    text-align: center;
     font-weight: bold;
     border: hsl(0, 0%, 66%);
+    min-width: 40px;
     border-radius: 5%;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -70,8 +72,8 @@ footer{
 }
 label{
     font-size: 25px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 button:hover, input:hover, label:hover, button:focus, input:focus, label:focus{
     background-color: #ffffff;

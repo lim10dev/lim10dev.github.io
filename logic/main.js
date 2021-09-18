@@ -6,8 +6,9 @@ var degiskenDegerDiv = document.getElementById("degiskenDegerler");
 var sonucHeader = document.getElementById("sonucHeader");
 var sonucYazili = document.getElementById("sonucYazili");
 var dil = document.getElementById("dil");
-var link = document.getElementsByTagName("a")[0];
+var link = document.getElementsByTagName("a")[1];
 var logictitle = document.getElementById("logicTitle");
+var contactLink = document.getElementById("contactLink");
 
 // Semboller / Symbols
 var ve = "&";
@@ -33,28 +34,31 @@ var parantezKapat = document.getElementById("parantezKapat");
 var sil = document.getElementById("sil");
 
 // Değer Değişmeleri / Values
-var degisDegisenler = ["[", "]", "(1)", "(0)", "1"+degil, "0"+degil, "11", "00", "10", "01",  "1"+ve+"1", "1"+ve+"0", "0"+ve+"1", "0"+ve+"0", "1"+veya+"1", "1"+veya+"0", "0"+veya+"1", "0"+veya+"0", "1"+yada+"1", "1"+yada+"0", "0"+yada+"1", "0"+yada+"0", "1"+ancak+"1", "1"+ancak+"0", "0"+ancak+"1", "0"+ancak+"0", "1"+ise+"1", "1"+ise+"0", "0"+ise+"1", "0"+ise+"0"];
-var degisDegisimler = ["(", ")",  "1",   "0",  "0",       "1",       "1",  "0",  "1",  "0",   "1",       "0",        "0",        "0",        "1",          "1",          "1",          "0",          "0",          "1",          "1",          "0",          "1",           "0",           "0",           "1",            "1",         "0",         "1",         "1"];
+var degisDegisenler = ["[", "]", "(1)", "(0)", degil+degil, "1"+degil, "0"+degil,  "1"+ve+"1", "1"+ve+"0", "0"+ve+"1", "0"+ve+"0", "1"+veya+"1", "1"+veya+"0", "0"+veya+"1", "0"+veya+"0", "1"+yada+"1", "1"+yada+"0", "0"+yada+"1", "0"+yada+"0", "1"+ancak+"1", "1"+ancak+"0", "0"+ancak+"1", "0"+ancak+"0", "1"+ise+"1", "1"+ise+"0", "0"+ise+"1", "0"+ise+"0"];
+var degisDegisimler = ["(", ")",  "1",   "0",  degil,       "0",       "1",        "1",       "0",        "0",        "0",        "1",          "1",          "1",          "0",          "0",          "1",          "1",          "0",          "1",           "0",           "0",           "1",            "1",         "0",         "1",         "1"];
 
 // Değişken Değişmeleri / Variables
 var degiskenler = [];
 var degiskenDegerleri = [];
 
 // Dil / Langs
-const dilKey = ["title", "mantikPlchldr", "hspla", "tabloHsp",
-            "degerHsp", "dgsknDegeren", "dgsknDegertr", "sonuc", "durumDflt",
-            "durumDogru", "durumYanlis", "durumHata",
-            "madeby", "tarafndan", "ve", "veya", "yada", "ise", "ancak", "degil"];
+const dilKey = ['title', 'mantikPlchldr', 'hspla', 'tabloHsp',
+            'degerHsp', 'dgsknDegeren', 'dgsknDegertr', 'sonuc', 'durumDflt',
+            'durumDogru', 'durumYanlis', 'durumHata', 'iletisim',
+            'madeby', 'tarafndan', 've', 'veya', 'yada', 'ise', 'ancak', 'degil',
+            'parantezAc', 'parantezKapat', 'sil'];
 
 const dilTr = ['Mantık Hesaplayıcısı', 'Hesaplanacak mantığı yazın...', 'Hesapla', 'Doğruluk Tablosu Hesapla', 'Doğruluk Değeri Hesapla', '', ' değeri', 'Sonuç:',
                 'Hesapla butonuna bastıktan sonra değeriniz hesaplanacaktır.', 'Doğru', 'Yanlış', 
-                'Hata! Yazımı kontrol edin veya bunun bir hata olduğunu düşünüyorsanız benimle iletişime geçin.', 
-                'Mantık Hesaplayıcısı ', ' tarafından yapıldı.', 'Ve', 'Veya', 'Ya da', 'İse', 'Ancak ve ancak', 'Değil', '', ' için sembol'];
+                'Hata! Yazımı kontrol edin veya bunun bir hata olduğunu düşünüyorsanız ', 'benimle iletişime geçin.', 
+                'Mantık Hesaplayıcısı ', ' tarafından yapıldı.', 'Ve', 'Veya', 'Ya da', 'İse', 'Ancak ve ancak', 'Değil', 
+                'Parantez Aç', 'Parantez Kapat', 'Sil'];
 
 const dilEn = ['Logic Calculator', 'Type your logic...', 'Calculate', 'Calculate Truth Table', 'Calculate Truth Value', 'value of ', '', 'Result:', 
                 'Press the Calculate button to calculate.', 'True', 'False',
-                'Error! Check the text or if you think this is a mistake, contact with me.',
-                'Logic Calculator made by ', '.', 'And', 'Or', 'Xor', 'If...then', 'If and only if', 'Not'];
+                'Error! Check the text or if you think this is a mistake, ', 'contact with me.',
+                'Logic Calculator made by ', '.', 'And', 'Or', 'Xor', 'If...then', 'If and only if', 'Not',
+                'Open Brackets', 'Close Brackets', 'Erase'];
 
 // Kod / Code
 
@@ -134,6 +138,7 @@ function degiskenKontrolEkle(hangiDegisken = 0){
         link.classList.remove("dogru", "yanlis", "hata");
         sonucHeader.innerText = dilKelimeAl("durumDflt", dil.value);
         sonucYazili.innerText = "";
+        contactLink.innerText = "";
         label.innerText = dilKelimeAl("dgsknDegeren", dil.value) + degiskenler[hangiDegisken] + dilKelimeAl("dgsknDegertr", dil.value) + " (" + Number(dgsknElement.checked).toString() + ")" + "\n";
     }
 
@@ -173,6 +178,7 @@ giris.oninput = function(){
     giris.value = giris.value.toLowerCase();
     document.body.classList.remove("dogru", "yanlis", "hata");
     link.classList.remove("dogru", "yanlis", "hata");
+    contactLink.innerText = "";
     sonucHeader.innerText = dilKelimeAl("durumDflt", dil.value);
     sonucYazili.innerText = "";
     var matchRegex = RegExp(/([a-z])/g);
@@ -232,6 +238,7 @@ document.onsubmit = hesapla.onclick = function(){
     var sonuc = mantikHesapla(giris.value);
     if(sonuc[1]){
         sonucHeader.innerText = dilKelimeAl("durumHata", dil.value);
+        contactLink.innerText = dilKelimeAl("iletisim", dil.value);
         sonucYazili.innerText = "";
         document.body.className = "hata";
         link.className = "hata";
@@ -295,6 +302,9 @@ function dilYukle(seciliDil = ""){
     iseButon.innerText = dilKelimeAl("ise", dil.value);
     ancakButon.innerText = dilKelimeAl("ancak", dil.value);
     degilButon.innerText = dilKelimeAl("degil", dil.value);
+    parantezAc.innerText = dilKelimeAl("parantezAc", dil.value);
+    parantezKapat.innerText = dilKelimeAl("parantezKapat", dil.value);
+    sil.innerText = dilKelimeAl("sil", dil.value);
     giris.oninput();
 }
 
