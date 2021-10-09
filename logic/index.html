@@ -20,13 +20,13 @@
             <option value="tr-TR">&#x1F1F9&#x1F1F7 Türkçe</option>
             <option value="en-EN">&#x1F1EC&#x1F1E7 English</option>
         </select>
-        <select id="mod" hidden>
-            <option value="deger-hesap">Doğruluk Değeri Hesapla</option>
-            <option value="tablo-hesap" disabled>Doğruluk Tablosu Hesapla</option>
-        </select>
         <div class="noselect">
             <button id="hesapla">Hesapla</button>
-            <button id="sil">Sil</button><br/>
+            <button id="sil">Sil</button>
+            <select id="mod">
+                <option value="deger-hesap">Doğruluk Değeri Hesapla</option>
+                <option value="tablo-hesap">Doğruluk Tablosu Hesapla</option>
+            </select> <br />
             
             <button id="degil">Değil</button>
             <button id="ve">Ve</button>
@@ -49,9 +49,12 @@
             <h3 id="sonucYazili"> </h3>
         </div>
         <hr>
-        <div id="degiskenDegerler">
+        <div id="DegerlerDiv">
           
         </div>
+        <table id="tablo">
+
+        </table>
         <footer>
             <span id="madeby"></span><a href="../">lim10dev</a><span id="tarafndan"></span>
         </footer>

@@ -1,14 +1,15 @@
 // Kurulum / Setup
 var giris = document.getElementById("giris");
 var hesapla = document.getElementById("hesapla");
-var secenek = document.getElementById("mod");
-var degiskenDegerDiv = document.getElementById("degiskenDegerler");
+var hesaplaSecenek = document.getElementById("mod");
+var DegerDiv = document.getElementById("DegerlerDiv");
 var sonucHeader = document.getElementById("sonucHeader");
 var sonucYazili = document.getElementById("sonucYazili");
 var dil = document.getElementById("dil");
 var link = document.getElementsByTagName("a")[1];
 var logictitle = document.getElementById("logicTitle");
 var contactLink = document.getElementById("contactLink");
+var tablo = document.querySelector("table");
 
 // Semboller / Symbols
 var ve = "&";
@@ -34,92 +35,104 @@ var parantezKapat = document.getElementById("parantezKapat");
 var sil = document.getElementById("sil");
 
 // Değer Değişmeleri / Values
-var degisDegisenler = ["[", "]", "(1)", "(0)", degil+degil, "1"+degil, "0"+degil,  "1"+ve+"1", "1"+ve+"0", "0"+ve+"1", "0"+ve+"0", "1"+veya+"1", "1"+veya+"0", "0"+veya+"1", "0"+veya+"0", "1"+yada+"1", "1"+yada+"0", "0"+yada+"1", "0"+yada+"0", "1"+ancak+"1", "1"+ancak+"0", "0"+ancak+"1", "0"+ancak+"0", "1"+ise+"1", "1"+ise+"0", "0"+ise+"1", "0"+ise+"0"];
-var degisDegisimler = ["(", ")",  "1",   "0",  degil,       "0",       "1",        "1",       "0",        "0",        "0",        "1",          "1",          "1",          "0",          "0",          "1",          "1",          "0",          "1",           "0",           "0",           "1",            "1",         "0",         "1",         "1"];
+const degisDegisenler = ["[", "]", "(1)", "(0)", degil + degil, "1" + degil, "0" + degil,
+    "1" + ve + "1", "1" + ve + "0", "0" + ve + "1", "0" + ve + "0",
+    "1" + veya + "1", "1" + veya + "0", "0" + veya + "1", "0" + veya + "0",
+    "1" + yada + "1", "1" + yada + "0", "0" + yada + "1", "0" + yada + "0",
+    "1" + ancak + "1", "1" + ancak + "0", "0" + ancak + "1", "0" + ancak + "0",
+    "1" + ise + "1", "1" + ise + "0", "0" + ise + "1", "0" + ise + "0"];
+const degisDegisimler = ["(", ")", "1", "0", degil, "0", "1",
+    "1", "0", "0", "0",
+    "1", "1", "1", "0",
+    "0", "1", "1", "0",
+    "1", "0", "0", "1",
+    "1", "0", "1", "1"];
 
-// Değişken Değişmeleri / Variables
+// Değişken Değişmeleri / variables
 var degiskenler = [];
 var degiskenDegerleri = [];
 
 // Dil / Langs
 const dilKey = ['title', 'mantikPlchldr', 'hspla', 'tabloHsp',
-            'degerHsp', 'dgsknDegeren', 'dgsknDegertr', 'sonuc', 'durumDflt',
-            'durumDogru', 'durumYanlis', 'durumHata', 'iletisim',
-            'madeby', 'tarafndan', 've', 'veya', 'yada', 'ise', 'ancak', 'degil',
-            'parantezAc', 'parantezKapat', 'sil'];
+    'degerHsp', 'dgsknDegeren', 'dgsknDegertr', 'sonuc', 'durumDflt',
+    'durumDogru', 'durumYanlis', 'durumHata', 'iletisim',
+    'madeby', 'tarafndan', 've', 'veya', 'yada', 'ise', 'ancak', 'degil',
+    'parantezAc', 'parantezKapat', 'sil'];
 
-const dilTr = ['Mantık Hesaplayıcısı', 'Hesaplanacak mantığı yazın...', 'Hesapla', 'Doğruluk Tablosu Hesapla', 'Doğruluk Değeri Hesapla', '', ' değeri', 'Sonuç:',
-                'Hesapla butonuna bastıktan sonra değeriniz hesaplanacaktır.', 'Doğru', 'Yanlış', 
-                'Hata! Yazımı kontrol edin veya bunun bir hata olduğunu düşünüyorsanız ', 'benimle iletişime geçin.', 
-                'Mantık Hesaplayıcısı ', ' tarafından yapıldı.', 'Ve', 'Veya', 'Ya da', 'İse', 'Ancak ve ancak', 'Değil', 
-                'Parantez Aç', 'Parantez Kapat', 'Sil'];
+const dilTr = ['Mantık Hesaplayıcısı', 'Hesaplanacak mantığı yazın...', 'Hesapla', 'Doğruluk Tablosu Hesapla', 'Doğruluk Değeri Hesapla', '', ' değeri', 'Sonuç',
+    'Hesapla butonuna bastıktan sonra değeriniz hesaplanacaktır.', 'Doğru', 'Yanlış',
+    'Hata! Yazımı kontrol edin veya bunun bir hata olduğunu düşünüyorsanız ', 'benimle iletişime geçin.',
+    'Mantık Hesaplayıcısı ', ' tarafından yapıldı.', 'Ve', 'Veya', 'Ya da', 'İse', 'Ancak ve ancak', 'Değil',
+    'Parantez Aç', 'Parantez Kapat', 'Sil'];
 
-const dilEn = ['Logic Calculator', 'Type your logic...', 'Calculate', 'Calculate Truth Table', 'Calculate Truth Value', 'value of ', '', 'Result:', 
-                'Press the Calculate button to calculate.', 'True', 'False',
-                'Error! Check the text or if you think this is a mistake, ', 'contact with me.',
-                'Logic Calculator made by ', '.', 'And', 'Or', 'Xor', 'If...then', 'If and only if', 'Not',
-                'Open Brackets', 'Close Brackets', 'Erase'];
+const dilEn = ['Logic Calculator', 'Type your logic...', 'Calculate', 'Calculate Truth Table', 'Calculate Truth Value', 'value of ', '', 'Result',
+    'Press the Calculate button to calculate.', 'True', 'False',
+    'Error! Check the text or if you think this is a mistake, ', 'contact with me.',
+    'Logic Calculator made by ', '.', 'And', 'Or', 'Xor', 'If...then', 'If and only if', 'Not',
+    'Open Brackets', 'Close Brackets', 'Erase'];
 
 // Kod / Code
 
-veButon.onclick = function(){
+veButon.onclick = function () {
     giris.value += ve;
     giris.oninput();
 }
-veyaButon.onclick = function(){
+veyaButon.onclick = function () {
     giris.value += veya;
     giris.oninput();
 }
-yadaButon.onclick = function(){
+yadaButon.onclick = function () {
     giris.value += yada;
     giris.oninput();
 }
-iseButon.onclick = function(){
+iseButon.onclick = function () {
     giris.value += ise;
     giris.oninput();
 }
-ancakButon.onclick = function(){
+ancakButon.onclick = function () {
     giris.value += ancak;
     giris.oninput();
 }
-degilButon.onclick = function(){
+degilButon.onclick = function () {
     giris.value += degil;
     giris.oninput();
 }
-qButon.onclick = function(){
+qButon.onclick = function () {
     giris.value += "q";
     giris.oninput();
 }
-pButon.onclick = function(){
+pButon.onclick = function () {
     giris.value += "p";
     giris.oninput();
 }
-rButon.onclick = function(){
+rButon.onclick = function () {
     giris.value += "r";
     giris.oninput();
 }
-birButon.onclick = function(){
+birButon.onclick = function () {
     giris.value += "1";
     giris.oninput();
 }
-sifirButon.onclick = function(){
+sifirButon.onclick = function () {
     giris.value += "0";
     giris.oninput();
 }
-parantezAc.onclick = function(){
+parantezAc.onclick = function () {
     giris.value += "(";
     giris.oninput();
 }
-parantezKapat.onclick = function(){
+parantezKapat.onclick = function () {
     giris.value += ")";
     giris.oninput();
 }
-sil.onclick = function(){
-    giris.value = giris.value.substring(0, giris.value.length-1);
+sil.onclick = function () {
+    giris.value = giris.value.substring(0, giris.value.length - 1);
     giris.oninput();
 }
 
-function degiskenKontrolEkle(hangiDegisken = 0){
+hesaplaSecenek.onchange = function () { giris.oninput() };
+
+function degiskenKontrolEkle(hangiDegisken = 0) {
 
     var dgsknElement = document.createElement("input");
     dgsknElement.type = "checkbox";
@@ -129,10 +142,10 @@ function degiskenKontrolEkle(hangiDegisken = 0){
     label.classList.add("noselect", "checkboxvar");
     label.setAttribute("for", degiskenler[hangiDegisken]);
     label.innerText = dilKelimeAl("dgsknDegeren", dil.value) + degiskenler[hangiDegisken] + dilKelimeAl("dgsknDegertr", dil.value) + " (" + Number(dgsknElement.checked).toString() + ")" + "\n";
-    degiskenDegerDiv.appendChild(dgsknElement);
-    degiskenDegerDiv.appendChild(label);
+    DegerDiv.appendChild(dgsknElement);
+    DegerDiv.appendChild(label);
 
-    dgsknElement.onchange = function(){
+    dgsknElement.onchange = function () {
         degiskenDegerleri[hangiDegisken] = Number(dgsknElement.checked).toString();
         document.body.classList.remove("dogru", "yanlis", "hata");
         link.classList.remove("dogru", "yanlis", "hata");
@@ -144,25 +157,25 @@ function degiskenKontrolEkle(hangiDegisken = 0){
 
 }
 
-function degistir(txt = ""){
+function degistir(txt = "") {
 
     var oldtxt = txt;
-    for(i=0; i<degisDegisenler.length; i++){
+    for (i = 0; i < degisDegisenler.length; i++) {
         txt = txt.replace(degisDegisenler[i], degisDegisimler[i])
     }
-    return [txt, oldtxt==txt];
+    return [txt, oldtxt == txt];
 
 }
 
-function degiskenleriDegistir(txt = ""){
+function degiskenleriDegistir(txt = "") {
 
     var eskiTxt = txt;
-    while(true){
+    while (true) {
 
-       for(i=0; i<degiskenler.length; i++){
-           txt = txt.replace(degiskenler[i], degiskenDegerleri[i])
+        for (i = 0; i < degiskenler.length; i++) {
+            txt = txt.replace(degiskenler[i], degiskenDegerleri[i])
         }
-        if(eskiTxt == txt){
+        if (eskiTxt == txt) {
             break;
         } else {
             eskiTxt = txt;
@@ -173,7 +186,7 @@ function degiskenleriDegistir(txt = ""){
 
 }
 
-giris.oninput = function(){
+giris.oninput = function () {
 
     giris.value = giris.value.toLowerCase();
     document.body.classList.remove("dogru", "yanlis", "hata");
@@ -184,34 +197,38 @@ giris.oninput = function(){
     var matchRegex = RegExp(/([a-z])/g);
     var karakterler = giris.value.match(matchRegex);
 
-    if(karakterler == null){
-        degiskenDegerDiv.textContent = "";
+    if (karakterler == null) {
+        DegerDiv.textContent = "";
+        degiskenler.length = 0;
         return;
     }
 
     degiskenler = [];
-    for(i=0; i<karakterler.length; i++){
-        if(!degiskenler.includes(karakterler[i])){
+    for (i = 0; i < karakterler.length; i++) {
+        if (!degiskenler.includes(karakterler[i])) {
             degiskenler.push(karakterler[i])
-            if (degiskenler.length > degiskenDegerleri.length)degiskenDegerleri.push("0");
+            if (degiskenler.length > degiskenDegerleri.length) degiskenDegerleri.push("0");
         }
     }
-    degiskenDegerDiv.textContent = "";
+    DegerDiv.textContent = "";
+    tablo.textContent = "";
 
-    for(i=0; i<degiskenler.length; i++){
-        degiskenKontrolEkle(i);
+    if (hesaplaSecenek.value == "deger-hesap") {
+        for (i = 0; i < degiskenler.length; i++) {
+            degiskenKontrolEkle(i);
+        }
     }
 
-    
+
 }
 
-function mantikHesapla(mantik = ""){
+function mantikHesapla(mantik = "") {
 
-    function bosluksuzMantik(){
+    function bosluksuzMantik() {
 
-        do{
+        do {
             mantik = mantik.replace(" ", "");
-        } while(mantik.includes(" "))
+        } while (mantik.includes(" "))
 
     }
 
@@ -219,45 +236,107 @@ function mantikHesapla(mantik = ""){
 
     mantik = "(" + degiskenleriDegistir(mantik) + ")";
 
-    while(mantik.length > 1){
-        if(degistir(mantik)[1] == true) return ["", true];
+    while (mantik.length > 1) {
+
+        if (degistir(mantik)[1] == true) return ["", true];
         mantik = degistir(mantik)[0];
     }
     return [mantik, false];
 
 }
 
-document.onkeyup = function(ev){
-    if(ev.code == "Enter"){
+document.onkeyup = function (ev) {
+    if (ev.code == "Enter") {
         hesapla.onclick();
     }
 }
 
-document.onsubmit = hesapla.onclick = function(){
+function hatayaGit() {
+    sonucHeader.innerText = dilKelimeAl("durumHata", dil.value);
+    contactLink.innerText = dilKelimeAl("iletisim", dil.value);
+    sonucYazili.innerText = "";
+    document.body.className = "hata";
+    link.className = "hata";
+}
 
-    var sonuc = mantikHesapla(giris.value);
-    if(sonuc[1]){
-        sonucHeader.innerText = dilKelimeAl("durumHata", dil.value);
-        contactLink.innerText = dilKelimeAl("iletisim", dil.value);
-        sonucYazili.innerText = "";
-        document.body.className = "hata";
-        link.className = "hata";
-    } else {
-        sonucHeader.innerText = dilKelimeAl("sonuc", dil.value);
-        if(sonuc[0] =='1'){
-            sonucYazili.innerText = "✔️ | 1 | " + dilKelimeAl("durumDogru", dil.value);
-            document.body.className = "dogru";
-            link.className = "dogru";
+hesapla.onclick = function () {
+
+    if (hesaplaSecenek.value == "deger-hesap") {
+        var sonuc = mantikHesapla(giris.value);
+        if (sonuc[1]) {
+            hatayaGit();
         } else {
-            sonucYazili.innerText = "❌ | 0 | " + dilKelimeAl("durumYanlis", dil.value);
-            document.body.className = "yanlis";
-            link.className = "yanlis";
+            sonucHeader.innerText = dilKelimeAl("sonuc", dil.value) + ":";
+            if (sonuc[0] == '1') {
+                sonucYazili.innerText = "✔️ | 1 | " + dilKelimeAl("durumDogru", dil.value);
+                document.body.className = "dogru";
+                link.className = "dogru";
+            } else {
+                sonucYazili.innerText = "❌ | 0 | " + dilKelimeAl("durumYanlis", dil.value);
+                document.body.className = "yanlis";
+                link.className = "yanlis";
+            }
+        }
+    } else {
+        tablo.textContent = "";
+        if(degiskenler.length == 0){
+            hatayaGit();
+            return;
+        }
+        var eskiDegiskenDegerleri = degiskenDegerleri;
+        var deger = "";
+        var tabloDegerler = [];
+        var tabloDegerlerIslem = [];
+        var sonuc;
+        degiskenDegerleri.length = degiskenler.length;
+        for (i = 0; i < degiskenDegerleri.length; i++) {
+            deger += "0";
+        }
+        var degerLength = deger.length;
+        while (deger.length == degerLength) {
+            degiskenDegerleri = deger.split("");
+            sonuc = mantikHesapla(giris.value);
+            if (sonuc[1]) {
+                hatayaGit();
+                return;
+            }
+            tabloDegerler.push(mantikHesapla(giris.value)[0]);
+            tabloDegerlerIslem.push(deger);
+            deger = addBinary(deger, "1");
+        }
+        degiskenDegerleri = eskiDegiskenDegerleri;
+
+        tablo.insertRow();
+        for(i = 0; i < degiskenDegerleri.length; i++){
+            tablo.rows[0].insertCell();
+            tablo.rows[0].cells[i].innerText = degiskenler[i];
+        }
+        tablo.rows[0].insertCell();
+        tablo.rows[0].cells[degiskenDegerleri.length].innerText = dilKelimeAl("sonuc", dil.value);
+        for(i = 1; i < Math.pow(2, degerLength) + 1; i++){
+            tablo.insertRow();
+            for(j = 0; j < degiskenDegerleri.length; j++){
+                tablo.rows[i].insertCell();
+                tablo.rows[i].cells[j].innerText = tabloDegerlerIslem[i-1].charAt(j);
+                if(tabloDegerlerIslem[i-1].charAt(j) == "0"){
+                    tablo.rows[i].cells[j].classList.add("yanlis");
+                } else {
+                    tablo.rows[i].cells[j].classList.add("dogru");
+                }
+            }
+            tablo.rows[i].insertCell();
+            tablo.rows[i].cells[j].innerText = tabloDegerler[i-1];
+            if(tabloDegerler[i-1] == "0"){
+                tablo.rows[i].cells[j].classList.add("yanlis");
+            } else {
+                tablo.rows[i].cells[j].classList.add("dogru");
+            }
         }
     }
 
 }
-function dilKelimeAl(key = "", dil = ""){
-    if(dil == "tr-TR"){
+function dilKelimeAl(key = "", dil = "") {
+    if (dil == "tr-TR") {
         return dilTr[dilKey.indexOf(key)]
     } else {
         return dilEn[dilKey.indexOf(key)]
@@ -265,17 +344,17 @@ function dilKelimeAl(key = "", dil = ""){
 }
 
 var userLang = navigator.language;
-if(userLang == "tr-TR"){
+if (userLang == "tr-TR") {
     dil.value = "tr-TR";
 } else {
     dil.value = "en-EN";
 }
 dilYukle(dil.value);
 
-function dilYukle(seciliDil = ""){
+function dilYukle(seciliDil = "") {
 
     var dilKelimeler = [];
-    if(seciliDil == "tr-TR"){
+    if (seciliDil == "tr-TR") {
         dilKelimeler = dilTr;
     } else {
         dilKelimeler = dilEn;
@@ -286,15 +365,8 @@ function dilYukle(seciliDil = ""){
     hesapla.innerText = dilKelimeAl("hspla", seciliDil);
     document.getElementById("madeby").innerText = dilKelimeAl("madeby", seciliDil);
     document.getElementById("tarafndan").innerText = dilKelimeAl("tarafndan", seciliDil);
-
-//    var chkbxlar = document.getElementsByClassName("checkboxvar", seciliDil);
-//    for(i=0; i<chkbxlar.length; i++){
-//        if(dilKelimeler == dilTr){
-//            chkbxlar[i].innerText = chkbxlar[i].attributes["for"].value + dilKelimeAl("dgsknDeger", seciliDil);
-//        } else {
-//            chkbxlar[i].innerText = dilKelimeAl("dgsknDeger", seciliDil) + chkbxlar[i].attributes["for"].value;
-//        }
-//    }
+    hesaplaSecenek.children[0].innerText = dilKelimeAl("degerHsp", seciliDil)
+    hesaplaSecenek.children[1].innerText = dilKelimeAl("tabloHsp", seciliDil)
 
     veButon.innerText = dilKelimeAl("ve", dil.value);
     veyaButon.innerText = dilKelimeAl("veya", dil.value);
@@ -308,6 +380,52 @@ function dilYukle(seciliDil = ""){
     giris.oninput();
 }
 
-dil.onchange = function(){
+dil.onchange = function () {
     dilYukle(dil.value)
+}
+// Binary https://stackoverflow.com/a/41373971/14033383
+function xor(a, b) { return (a === b ? 0 : 1); }
+function and(a, b) { return a == 1 && b == 1 ? 1 : 0; }
+function or(a, b) { return (a || b); }
+
+function halfAdder(a, b) {
+    const sum = xor(a, b);
+    const carry = and(a, b);
+    return [sum, carry];
+}
+
+function fullAdder(a, b, carry) {
+    halfAdd = halfAdder(a, b);
+    const sum = xor(carry, halfAdd[0]);
+    carry = and(carry, halfAdd[0]);
+    carry = or(carry, halfAdd[1]);
+    return [sum, carry];
+}
+
+function addBinary(a, b) {
+
+    while (a.length > b.length) {
+        b = "0" + b;
+    }
+    while (b.length > a.length) {
+        a = "0" + a;
+    }
+    let sum = '';
+    let carry = '';
+
+    for (var i = a.length - 1; i >= 0; i--) {
+        if (i == a.length - 1) {
+            //half add the first pair
+            const halfAdd1 = halfAdder(a[i], b[i]);
+            sum = halfAdd1[0] + sum;
+            carry = halfAdd1[1];
+        } else {
+            //full add the rest
+            const fullAdd = fullAdder(a[i], b[i], carry);
+            sum = fullAdd[0] + sum;
+            carry = fullAdd[1];
+        }
+    }
+
+    return carry ? carry + sum : sum;
 }

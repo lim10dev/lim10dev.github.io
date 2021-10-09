@@ -31,7 +31,7 @@ button{
     margin: 5px 5px 5px 0px;
 }
 button:hover{
-    cursor: hand;
+    cursor: pointer;
 }
 select{
     background-color: #f0f8ff;
@@ -45,15 +45,15 @@ select{
     width: auto;
     cursor: pointer;
 }
+table{
+    width: 100%;
+}
 table, th, td {
-    border:3px solid #f0f8ff;
+    border:1px solid #f0f8ff;
     border-collapse: collapse;
     text-align: center;
-    padding: 1px 1px 1px 1px;
+    padding: 5px 15px 5px 15px;
     background-color: #4a7979;
-}
-th, td {
-    padding: 15px;
 }
 footer{
     position: fixed;
