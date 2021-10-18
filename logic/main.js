@@ -1,5 +1,5 @@
 // Kurulum / Setup
-var giris = document.getElementById("giris");
+var giris = document.querySelector("input")
 var hesapla = document.getElementById("hesapla");
 var hesaplaSecenek = document.getElementById("mod");
 var degerDiv = document.getElementById("DegerlerDiv");
@@ -75,55 +75,53 @@ const dilEn = ['Logic Calculator', 'Type your logic...', 'Calculate', 'Calculate
 // Kod / Code
 
 veButon.onclick = function () {
-    giris.value += ve;
-    giris.oninput();
+    giriseEkle(ve);
 }
 veyaButon.onclick = function () {
-    giris.value += veya;
-    giris.oninput();
+    giriseEkle(veya);
 }
 yadaButon.onclick = function () {
-    giris.value += yada;
-    giris.oninput();
+    giriseEkle(yada);
 }
 iseButon.onclick = function () {
-    giris.value += ise;
-    giris.oninput();
+    giriseEkle(ise);
 }
 ancakButon.onclick = function () {
-    giris.value += ancak;
-    giris.oninput();
+    giriseEkle(ancak);
 }
 degilButon.onclick = function () {
-    giris.value += degil;
-    giris.oninput();
+    giriseEkle(degil);
 }
 qButon.onclick = function () {
-    giris.value += "q";
-    giris.oninput();
+    giriseEkle("q");
 }
 pButon.onclick = function () {
-    giris.value += "p";
-    giris.oninput();
+    giriseEkle("p");
 }
 rButon.onclick = function () {
-    giris.value += "r";
-    giris.oninput();
+    giriseEkle("r");
 }
 birButon.onclick = function () {
-    giris.value += "1";
-    giris.oninput();
+    giriseEkle("1");
 }
 sifirButon.onclick = function () {
-    giris.value += "0";
-    giris.oninput();
+    giriseEkle("0");
 }
 parantezAc.onclick = function () {
-    giris.value += "(";
-    giris.oninput();
+    giriseEkle("(");
 }
 parantezKapat.onclick = function () {
-    giris.value += ")";
+    giriseEkle(")");
+}
+function giriseEkle(txt = "") {
+    var girisTxt = giris.value;
+    if ((giris.selectionStart == 0) && (giris.selectionEnd == 0)) {
+        giris.value += txt;
+    } else {
+        girisOncesi = girisTxt.substring(0, giris.selectionStart);
+        girisSonrasi = girisTxt.substring(giris.selectionEnd, girisTxt.length);
+        giris.value = girisOncesi + txt + girisSonrasi;
+    }
     giris.oninput();
 }
 sil.onclick = function () {
@@ -163,10 +161,10 @@ function degistir(txt = "") {
     var oldtxt = txt;
     var gecicitxt;
     for (i = 0; i < degisDegisenler.length; i++) {
-        do{
+        do {
             gecicitxt = txt;
             txt = txt.replace(degisDegisenler[i], degisDegisimler[i])
-        }while(gecicitxt!=txt)
+        } while (gecicitxt != txt)
     }
     return [txt, oldtxt == txt];
 
@@ -187,14 +185,15 @@ function degiskenleriDegistir(txt = "") {
         }
 
     }
-    console.log(txt)
     return txt;
 
 }
 
 giris.oninput = function () {
 
+    var girisIndex = [giris.selectionStart, giris.selectionEnd];
     giris.value = giris.value.toLowerCase();
+    giris.setSelectionRange(girisIndex[0], girisIndex[1]);
     document.body.classList.remove("dogru", "yanlis", "hata");
     link.classList.remove("dogru", "yanlis", "hata");
     contactLink.innerText = "";
@@ -231,19 +230,16 @@ giris.oninput = function () {
 function mantikHesapla(mantik = "") {
 
     do {
-            mantik = mantik.replace(" ", "");
-        } while (mantik.includes(" "))
+        mantik = mantik.replace(" ", "");
+    } while (mantik.includes(" "))
 
     mantik = "(" + degiskenleriDegistir(mantik) + ")";
-
     var degisenSonuc = degistir(mantik);
-    console.log(mantik)
     while (mantik.length > 1) {
         if (degisenSonuc[1] == true) return ["", true];
 
         mantik = degisenSonuc[0];
         degisenSonuc = degistir(mantik);
-        console.log(mantik)
     }
     return [mantik, false];
 
@@ -283,7 +279,7 @@ hesapla.onclick = function () {
         }
     } else {
         tablo.textContent = "";
-        if(degiskenler.length == 0){
+        if (degiskenler.length == 0) {
             hatayaGit();
             return;
         }
@@ -311,26 +307,26 @@ hesapla.onclick = function () {
         degiskenDegerleri = eskiDegiskenDegerleri;
 
         tablo.insertRow();
-        for(i = 0; i < degiskenDegerleri.length; i++){
+        for (i = 0; i < degiskenDegerleri.length; i++) {
             tablo.rows[0].insertCell();
             tablo.rows[0].cells[i].innerText = degiskenler[i];
         }
         tablo.rows[0].insertCell();
         tablo.rows[0].cells[degiskenDegerleri.length].innerText = dilKelimeAl("sonuc", dil.value);
-        for(i = 1; i < Math.pow(2, degerLength) + 1; i++){
+        for (i = 1; i < Math.pow(2, degerLength) + 1; i++) {
             tablo.insertRow();
-            for(j = 0; j < degiskenDegerleri.length; j++){
+            for (j = 0; j < degiskenDegerleri.length; j++) {
                 tablo.rows[i].insertCell();
-                tablo.rows[i].cells[j].innerText = tabloDegerlerIslem[i-1].charAt(j);
-                if(tabloDegerlerIslem[i-1].charAt(j) == "0"){
+                tablo.rows[i].cells[j].innerText = tabloDegerlerIslem[i - 1].charAt(j);
+                if (tabloDegerlerIslem[i - 1].charAt(j) == "0") {
                     tablo.rows[i].cells[j].classList.add("yanlis");
                 } else {
                     tablo.rows[i].cells[j].classList.add("dogru");
                 }
             }
             tablo.rows[i].insertCell();
-            tablo.rows[i].cells[j].innerText = tabloDegerler[i-1];
-            if(tabloDegerler[i-1] == "0"){
+            tablo.rows[i].cells[j].innerText = tabloDegerler[i - 1];
+            if (tabloDegerler[i - 1] == "0") {
                 tablo.rows[i].cells[j].classList.add("yanlis");
             } else {
                 tablo.rows[i].cells[j].classList.add("dogru");
