@@ -2,7 +2,7 @@
 var giris = document.getElementById("giris");
 var hesapla = document.getElementById("hesapla");
 var hesaplaSecenek = document.getElementById("mod");
-var DegerDiv = document.getElementById("DegerlerDiv");
+var degerDiv = document.getElementById("DegerlerDiv");
 var sonucHeader = document.getElementById("sonucHeader");
 var sonucYazili = document.getElementById("sonucYazili");
 var dil = document.getElementById("dil");
@@ -10,6 +10,7 @@ var link = document.getElementsByTagName("a")[1];
 var logictitle = document.getElementById("logicTitle");
 var contactLink = document.getElementById("contactLink");
 var tablo = document.querySelector("table");
+var kaynakKod = document.getElementById("kaynakKod");
 
 // Semboller / Symbols
 var ve = "&";
@@ -57,19 +58,19 @@ const dilKey = ['title', 'mantikPlchldr', 'hspla', 'tabloHsp',
     'degerHsp', 'dgsknDegeren', 'dgsknDegertr', 'sonuc', 'durumDflt',
     'durumDogru', 'durumYanlis', 'durumHata', 'iletisim',
     'madeby', 'tarafndan', 've', 'veya', 'yada', 'ise', 'ancak', 'degil',
-    'parantezAc', 'parantezKapat', 'sil'];
+    'parantezAc', 'parantezKapat', 'sil', 'kaynakKod'];
 
 const dilTr = ['Mantık Hesaplayıcısı', 'Hesaplanacak mantığı yazın...', 'Hesapla', 'Doğruluk Tablosu Hesapla', 'Doğruluk Değeri Hesapla', '', ' değeri', 'Sonuç',
     'Hesapla butonuna bastıktan sonra değeriniz hesaplanacaktır.', 'Doğru', 'Yanlış',
     'Hata! Yazımı kontrol edin veya bunun bir hata olduğunu düşünüyorsanız ', 'benimle iletişime geçin.',
     'Mantık Hesaplayıcısı ', ' tarafından yapıldı.', 'Ve', 'Veya', 'Ya da', 'İse', 'Ancak ve ancak', 'Değil',
-    'Parantez Aç', 'Parantez Kapat', 'Sil'];
+    'Parantez Aç', 'Parantez Kapat', 'Sil', 'Kaynak Kodu'];
 
 const dilEn = ['Logic Calculator', 'Type your logic...', 'Calculate', 'Calculate Truth Table', 'Calculate Truth Value', 'value of ', '', 'Result',
     'Press the Calculate button to calculate.', 'True', 'False',
     'Error! Check the text or if you think this is a mistake, ', 'contact with me.',
     'Logic Calculator made by ', '.', 'And', 'Or', 'Xor', 'If...then', 'If and only if', 'Not',
-    'Open Brackets', 'Close Brackets', 'Erase'];
+    'Open Brackets', 'Close Brackets', 'Erase', 'Source Code'];
 
 // Kod / Code
 
@@ -142,8 +143,8 @@ function degiskenKontrolEkle(hangiDegisken = 0) {
     label.classList.add("noselect", "checkboxvar");
     label.setAttribute("for", degiskenler[hangiDegisken]);
     label.innerText = dilKelimeAl("dgsknDegeren", dil.value) + degiskenler[hangiDegisken] + dilKelimeAl("dgsknDegertr", dil.value) + " (" + Number(dgsknElement.checked).toString() + ")" + "\n";
-    DegerDiv.appendChild(dgsknElement);
-    DegerDiv.appendChild(label);
+    degerDiv.appendChild(dgsknElement);
+    degerDiv.appendChild(label);
 
     dgsknElement.onchange = function () {
         degiskenDegerleri[hangiDegisken] = Number(dgsknElement.checked).toString();
@@ -160,8 +161,12 @@ function degiskenKontrolEkle(hangiDegisken = 0) {
 function degistir(txt = "") {
 
     var oldtxt = txt;
+    var gecicitxt;
     for (i = 0; i < degisDegisenler.length; i++) {
-        txt = txt.replace(degisDegisenler[i], degisDegisimler[i])
+        do{
+            gecicitxt = txt;
+            txt = txt.replace(degisDegisenler[i], degisDegisimler[i])
+        }while(gecicitxt!=txt)
     }
     return [txt, oldtxt == txt];
 
@@ -182,6 +187,7 @@ function degiskenleriDegistir(txt = "") {
         }
 
     }
+    console.log(txt)
     return txt;
 
 }
@@ -198,7 +204,7 @@ giris.oninput = function () {
     var karakterler = giris.value.match(matchRegex);
 
     if (karakterler == null) {
-        DegerDiv.textContent = "";
+        degerDiv.textContent = "";
         degiskenler.length = 0;
         return;
     }
@@ -210,7 +216,7 @@ giris.oninput = function () {
             if (degiskenler.length > degiskenDegerleri.length) degiskenDegerleri.push("0");
         }
     }
-    DegerDiv.textContent = "";
+    degerDiv.textContent = "";
     tablo.textContent = "";
 
     if (hesaplaSecenek.value == "deger-hesap") {
@@ -224,22 +230,20 @@ giris.oninput = function () {
 
 function mantikHesapla(mantik = "") {
 
-    function bosluksuzMantik() {
-
-        do {
+    do {
             mantik = mantik.replace(" ", "");
         } while (mantik.includes(" "))
 
-    }
-
-    bosluksuzMantik();
-
     mantik = "(" + degiskenleriDegistir(mantik) + ")";
 
+    var degisenSonuc = degistir(mantik);
+    console.log(mantik)
     while (mantik.length > 1) {
+        if (degisenSonuc[1] == true) return ["", true];
 
-        if (degistir(mantik)[1] == true) return ["", true];
-        mantik = degistir(mantik)[0];
+        mantik = degisenSonuc[0];
+        degisenSonuc = degistir(mantik);
+        console.log(mantik)
     }
     return [mantik, false];
 
@@ -335,7 +339,7 @@ hesapla.onclick = function () {
     }
 
 }
-function dilKelimeAl(key = "", dil = "") {
+function dilKelimeAl(key = "", dil = dil.value) {
     if (dil == "tr-TR") {
         return dilTr[dilKey.indexOf(key)]
     } else {
@@ -377,6 +381,7 @@ function dilYukle(seciliDil = "") {
     parantezAc.innerText = dilKelimeAl("parantezAc", dil.value);
     parantezKapat.innerText = dilKelimeAl("parantezKapat", dil.value);
     sil.innerText = dilKelimeAl("sil", dil.value);
+    kaynakKod.innerText = dilKelimeAl("kaynakKod", dil.value)
     giris.oninput();
 }
 
