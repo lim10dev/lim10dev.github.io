@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" href="favicon.ico">
+        <meta name="theme-color" content="#ffcdcd">
+        <meta name="author" content="lim10dev">
+        <meta name="application-name" content="EBOB EKOK Hesaplayıcısı">
+        <meta name="description" content="EBOB EKOK hesaplamak için bir araç.">
+        <meta name="keywords" content="ebob, ekok, hesapla, ebob ekok, 8.sınıf, 8 sinif, 9 sınıf, matematik">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EBOB EKOK Hesaplayıcısı</title>
+    </head>
+    <body>
+        <h1>EBOB EKOK Hesaplayıcısı</h1>
+        <input type="number" class="numInput noselect" id="ilksayi" value="1" min="1" max="2147483647">
+        <input type="number" class="numInput noselect" id="ikincisayi" value="1" min="1" max="2147483647">
+        <input type="number" class="numInput noselect" id="ucuncusayi" value="1" min="1" max="2147483647"><br>
+        <button id="hesapla" class="noselect">Hesapla</button>
+        <select id="secenek" class="noselect">
+            <option value="ebob">EBOB Hesapla</option>
+            <option value="ekok">EKOK Hesapla</option>
+        </select>
+        <input type="checkbox" checked="true" id="ucuncusayiolsunmu">
+        <label for="ucuncusayiolsunmu" class="noselect">Üçüncü Sayı</label><hr>
+        <div>
+            <h1 id="sonucHeader">Sayıları girdikten sonra hesapla tuşuna basın.</h1>
+            <h1 id="sonucYazi"></h1>
+        </div>
+
+        <footer>
+            EBOB EKOK Hesaplayıcısı <a href="../">lim10dev</a> tarafından yapıldı.<br>
+            <a href="https://github.com/lim10dev/lim10dev.github.io/tree/main/ebob-ekok">Kaynak Kodu</a>
+        </footer>
+        <script src="main.js"></script>
+    </body>
+</html>

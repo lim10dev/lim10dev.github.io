@@ -1,0 +1,79 @@
+body{
+    background-color: #ffcdcd;
+    color: #801a1a;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.numInput{
+    height: 30px;
+    width: fit-content;
+}
+button{
+    background-color: #801a1a;
+    color: #ffcdcd;
+    text-align: center;
+    font-weight: bold;
+    border: #801a1a;
+    min-width: 40px;
+    height: 30px;
+    border-radius: 5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px 5px 5px 0px;
+}
+label{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+button:hover, input:hover, label:hover, input:focus, label:focus{
+    background-color: #ffffff;
+    cursor: pointer;
+    color: black;
+}
+select{
+    background-color: #801a1a;
+    font-weight: bold;
+    border: #801a1a;
+    color: #ffcdcd;
+    height: 30px;
+    min-width: 100px;
+    border-radius: 5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px 5px 5px 0px;
+    height: 30px;
+    width: auto;
+    cursor: pointer;
+}
+footer{
+    position: fixed;
+    text-decoration: none;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+}
+a{
+    color: #801a1a;
+    font-weight: bold;
+    text-decoration: none;
+}
+#sonucYazi{
+    font-size: 45px;
+}
+#sonucHeader{
+    font-size: 25px;
+    transition: all 250ms;
+}
+#sonucHeader.sonucVar{
+    font-size: 40px;
+}
+a:hover{
+    text-decoration: underline;
+}
+.noselect{
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+}
