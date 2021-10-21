@@ -22,6 +22,10 @@ var birincisayi;
 var ikincisayi;
 var ucuncusayi;
 
+document.onkeyup = function(ev){
+    if(ev.key == "Enter") hesapla.onclick();
+}
+
 hesapla.onclick = function () {
     var sonuc = 1; // Aşağıdaki çarpma işleminin çalışması için bu değişkene bir değer atamamız lazım.
     birincisayi = Number(ilkSayiEl.value);
