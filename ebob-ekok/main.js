@@ -9,6 +9,7 @@ var ucuncuSayiOlsunMu = document.getElementById("ucuncusayiolsunmu");
 
 var sonucHeader = document.getElementById("sonucHeader");
 var sonucYazi = document.getElementById("sonucYazi");
+var carpanlarYazi = document.getElementById("carpanlarYazi");
 
 // Kod
 
@@ -26,22 +27,50 @@ hesapla.onclick = function () {
     birincisayi = Number(ilkSayiEl.value);
     ikincisayi = Number(ikinciSayiEl.value);
     ucuncusayi = (ucuncuSayiOlsunMu.checked ? Number(ucuncuSayiEl.value) : birincisayi);
+    var sadeceCarpanlar = [];
     // Eğer üçüncü sayı olacak ise üçüncü sayıyı olduğu gibi alıyor. Eğer alınmayacak ise ilk sayıyı üçüncü sayı olarak yazıyor.
     var carpanlar = carpanlarHesapla(birincisayi, ikincisayi, ucuncusayi);
+    var hangiMod = Number(secenek.value == "ebob");
+    console.log(hangiMod);
     // Çarpanlarını hesaplamak için fonksiyonumsu şey.
-    for (i = 0; i < carpanlar[Number(secenek.value == "ebob")].length; i++) {
-        sonuc *= carpanlar[Number(secenek.value == "ebob")][i];
+    for (i = 0; i < carpanlar[hangiMod].length; i++) {
+        if (!sadeceCarpanlar.includes(carpanlar[hangiMod][i])) sadeceCarpanlar.push(carpanlar[hangiMod][i]);
+        sonuc *= carpanlar[hangiMod][i];
     }
-    sonucHeader.innerHTML = "Sonuç:";
-    sonucYazi.innerHTML = sonuc;
+    sonucHeader.innerText = "Sonuç:";
+    sonucYazi.innerText = sonuc;
+    var txt = "Çarpanlar: "
+    if(sadeceCarpanlar.length == 0){
+        txt = "Asal çarpan yok."
+    } else {
+        for (i = 0; i < sadeceCarpanlar.length; i++) {
+            txt += "" + sadeceCarpanlar[i] + (i + 1 == sadeceCarpanlar.length ? "" : ", ")
+        }
+    }
+    carpanlarYazi.innerText = txt;
     sonucHeader.classList.add("sonucVar");
 }
 
-ucuncuSayiOlsunMu.onchange = function(){
+ucuncuSayiOlsunMu.onchange = function () {
     ucuncuSayiEl.disabled = !ucuncuSayiOlsunMu.checked;
+    normalDurumaGec();
 }
 
-secenek.onchange = ilkSayiEl.oninput = ikinciSayiEl.oninput = ucuncuSayiEl.oninput = normalDurumaGec;
+secenek.onchange = normalDurumaGec;
+
+ilkSayiEl.onchange = function () {
+    ilkSayiEl.value = Math.floor(ilkSayiEl.value) < 1 ? 1 : Math.floor(ilkSayiEl.value);
+    normalDurumaGec();
+}
+ikinciSayiEl.onchange = function () {
+    ikinciSayiEl.value = Math.floor(ikinciSayiEl.value) < 1 ? 1 : Math.floor(ikinciSayiEl.value);
+    normalDurumaGec();
+}
+ucuncuSayiEl.onchange = function () {
+    if (ucuncuSayiOlsunMu.checked) ucuncuSayiEl.value = Math.floor(ucuncuSayiEl.value) < 1 ? 1 : Math.floor(ucuncuSayiEl.value);
+    normalDurumaGec();
+}
+
 /**
  * @param {Number} sayi1 İlk sayı
  * @param {Number} sayi2 İkinci sayı
@@ -66,8 +95,9 @@ function carpanlarHesapla(sayi1, sayi2, sayi3) {
     return [carpanlar, ortakCarpanlar];
 }
 
-function normalDurumaGec(){
+function normalDurumaGec() {
     sonucHeader.innerText = sonucDefault;
     sonucYazi.innerText = "";
     sonucHeader.classList.remove("sonucVar");
+    carpanlarYazi.innerText = "";
 }
