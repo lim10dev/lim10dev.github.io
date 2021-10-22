@@ -22,8 +22,10 @@ var birincisayi;
 var ikincisayi;
 var ucuncusayi;
 
-document.onkeyup = function(ev){
-    if(ev.key == "Enter") hesapla.onclick();
+var maxDeger = 4294967295; // (2^32)-1 olması için neden yok sadece havalı olsun diye öyle yazdım
+
+document.onkeyup = function (ev) {
+    if (ev.key == "Enter") hesapla.onclick();
 }
 
 hesapla.onclick = function () {
@@ -33,22 +35,22 @@ hesapla.onclick = function () {
     ucuncusayi = (ucuncuSayiOlsunMu.checked ? Number(ucuncuSayiEl.value) : birincisayi);
     var sadeceCarpanlar = [];
     // Eğer üçüncü sayı olacak ise üçüncü sayıyı olduğu gibi alıyor. Eğer alınmayacak ise ilk sayıyı üçüncü sayı olarak yazıyor.
-    var carpanlar = carpanlarHesapla(birincisayi, ikincisayi, ucuncusayi);
-    var hangiMod = Number(secenek.value == "ebob");
-    console.log(hangiMod);
+    var carpanlar = carpanlarHesapla(birincisayi, ikincisayi, ucuncusayi)[Number(secenek.value == "ebob")];
     // Çarpanlarını hesaplamak için fonksiyonumsu şey.
-    for (i = 0; i < carpanlar[hangiMod].length; i++) {
-        if (!sadeceCarpanlar.includes(carpanlar[hangiMod][i])) sadeceCarpanlar.push(carpanlar[hangiMod][i]);
-        sonuc *= carpanlar[hangiMod][i];
+    for (i = 0; i < carpanlar.length; i++) {
+        if (!sadeceCarpanlar.includes(carpanlar[i])) sadeceCarpanlar.push(carpanlar[i]);
+        sonuc *= carpanlar[i];
     }
     sonucHeader.innerText = "Sonuç:";
     sonucYazi.innerText = sonuc;
     var txt = "Çarpanlar: "
-    if(sadeceCarpanlar.length == 0){
+    const kacKereGecer = (number, numbers) => numbers.reduce((counter, currentNumber) => (number === currentNumber ? counter + 1 : counter), 0);
+    // https://stackoverflow.com/a/62722045/14033383
+    if (sadeceCarpanlar.length == 0) {
         txt = "Asal çarpan yok."
     } else {
         for (i = 0; i < sadeceCarpanlar.length; i++) {
-            txt += "" + sadeceCarpanlar[i] + (i + 1 == sadeceCarpanlar.length ? "" : ", ")
+            txt += `${sadeceCarpanlar[i]}(${kacKereGecer(carpanlar[i], carpanlar)})${(i + 1 == sadeceCarpanlar.length ? "" : ", ")}`
         }
     }
     carpanlarYazi.innerText = txt;
@@ -63,15 +65,18 @@ ucuncuSayiOlsunMu.onchange = function () {
 secenek.onchange = normalDurumaGec;
 
 ilkSayiEl.onchange = function () {
-    ilkSayiEl.value = Math.floor(ilkSayiEl.value) < 1 ? 1 : Math.floor(ilkSayiEl.value);
+    var a = ilkSayiEl.value;
+    ilkSayiEl.value = Math.floor(a) < 1 ? 1 : (Math.floor(a) > maxDeger ? maxDeger : Math.floor(a));
     normalDurumaGec();
 }
 ikinciSayiEl.onchange = function () {
-    ikinciSayiEl.value = Math.floor(ikinciSayiEl.value) < 1 ? 1 : Math.floor(ikinciSayiEl.value);
+    var a = ikinciSayiEl.value;
+    ikinciSayiEl.value = Math.floor(a) < 1 ? 1 : (Math.floor(a) > maxDeger ? maxDeger : Math.floor(a));
     normalDurumaGec();
 }
 ucuncuSayiEl.onchange = function () {
-    if (ucuncuSayiOlsunMu.checked) ucuncuSayiEl.value = Math.floor(ucuncuSayiEl.value) < 1 ? 1 : Math.floor(ucuncuSayiEl.value);
+    var a = ucuncuSayiEl.value;
+    ucuncuSayiEl.value = Math.floor(a) < 1 ? 1 : (Math.floor(a) > maxDeger ? maxDeger : Math.floor(a));
     normalDurumaGec();
 }
 
@@ -79,7 +84,7 @@ ucuncuSayiEl.onchange = function () {
  * @param {Number} sayi1 İlk sayı
  * @param {Number} sayi2 İkinci sayı
  * @param {Number} sayi3 Üçüncü sayı
- * @return {*} 2 Küme: İlk küme tüm çarpanlar, İkinci küme ortak çarpanlar.
+ * @return {Number[][]} 2 Küme: İlk küme tüm çarpanlar, İkinci küme ortak çarpanlar.
  */
 function carpanlarHesapla(sayi1, sayi2, sayi3) {
     var a = (sayi1 < 1 ? 1 : sayi1);
@@ -104,4 +109,5 @@ function normalDurumaGec() {
     sonucYazi.innerText = "";
     sonucHeader.classList.remove("sonucVar");
     carpanlarYazi.innerText = "";
+    // Her şeyi varsayılan ayarlara ayarlar
 }
