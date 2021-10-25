@@ -113,19 +113,38 @@ parantezAc.onclick = function () {
 parantezKapat.onclick = function () {
     giriseEkle(")");
 }
+
+veButon.onmousedown = veyaButon.onmousedown = yadaButon.onmousedown =
+    iseButon.onmousedown = ancakButon.onmousedown = degilButon.onmousedown =
+    pButon.onmousedown = qButon.onmousedown = rButon.onmousedown = birButon.onmousedown =
+    sifirButon.onmousedown = parantezAc.onmousedown = parantezKapat.onmousedown = sil.onmousedown = (ev) => { ev.preventDefault(); }
+
 function giriseEkle(txt = "") {
     var girisTxt = giris.value;
-    if ((giris.selectionStart == 0) && (giris.selectionEnd == 0)) {
-        giris.value += txt;
-    } else {
-        girisOncesi = girisTxt.substring(0, giris.selectionStart);
-        girisSonrasi = girisTxt.substring(giris.selectionEnd, girisTxt.length);
+    var girisSecimBaslangic = giris.selectionStart;
+    var girisSecimBitis = giris.selectionEnd;
+    if (document.activeElement == giris) {
+        girisOncesi = girisTxt.substring(0, girisSecimBaslangic);
+        girisSonrasi = girisTxt.substring(girisSecimBitis, girisTxt.length);
         giris.value = girisOncesi + txt + girisSonrasi;
+        giris.selectionStart = giris.selectionEnd = ++girisSecimBaslangic;
+    } else {
+        giris.value += txt;
     }
     giris.oninput();
 }
 sil.onclick = function () {
-    giris.value = giris.value.substring(0, giris.value.length - 1);
+    var girisTxt = giris.value;
+    var girisSecimBaslangic = giris.selectionStart;
+    var girisSecimBitis = giris.selectionEnd;
+    if (document.activeElement == giris) {
+        girisOncesi = girisTxt.substring(0, girisSecimBaslangic - (girisSecimBaslangic == girisSecimBitis));
+        girisSonrasi = girisTxt.substring(girisSecimBitis, girisTxt.length);
+        giris.value = girisOncesi + girisSonrasi;
+        giris.selectionStart = giris.selectionEnd = (girisSecimBaslangic - (girisSecimBaslangic == girisSecimBitis));
+    } else {
+        giris.value = giris.value.substring(0, giris.value.length - 1);
+    }
     giris.oninput();
 }
 
