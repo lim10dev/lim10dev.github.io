@@ -42,7 +42,7 @@ const degisDegisenler = ["[", "]", "(1)", "(0)", degil + degil, "1" + degil, "0"
     "1" + yada + "1", "1" + yada + "0", "0" + yada + "1", "0" + yada + "0",
     "1" + ancak + "1", "1" + ancak + "0", "0" + ancak + "1", "0" + ancak + "0",
     "1" + ise + "1", "1" + ise + "0", "0" + ise + "1", "0" + ise + "0"];
-const degisDegisimler = ["(", ")", "1", "0", degil, "0", "1",
+const degisDegisimler = ["(", ")", "1", "0", "", "0", "1",
     "1", "0", "0", "0",
     "1", "1", "1", "0",
     "0", "1", "1", "0",
