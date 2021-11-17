@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="main.css">
+        <link rel="icon" href="favicon.ico">
+        <meta name="theme-color" content="#ffcdcd">
+        <meta name="author" content="lim10dev">
+        <meta name="application-name" content="Taban Hesaplayıcısı">
+        <meta name="description" content="Sayı tabanlarını değiştirmek için bir araç.">
+        <meta name="keywords" content="sayı, taban, sayı tabanı, matematik, lim10dev, lim10, limon, hesaplayı, hesaplayıcı">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Taban Hesaplayıcısı</title>
+    </head>
+    <body>
+        <h1>Taban Hesaplayıcısı</h1>
+        <h2>Çevrilecek sayı</h2>
+        <input type="text" class="numInput noselect" id="ilkSayi" value="1">
+        <br>
+        <input type="number" class="numInput noselect taban" id="ilkTaban" value="10" min="2" max="32">
+        Tabanı
+        <br>
+        <h2>Çevrilecek taban</h2>
+        <input type="number" class="numInput noselect taban" id="ikinciTaban" value="10" min="2" max="32">
+        <br>
+        <button id="hesapla" class="noselect">Hesapla</button>
+        <hr>
+        <div>
+            <h1 id="sonucHeader">Sayıları girdikten sonra hesapla tuşuna basın.</h1>
+            <h1 id="sonucYazi"></h1>
+            <button id="kopyala" class="noselect" hidden>Kopyala</button>
+            <p id="ekYazi"></p>
+        </div>
+
+        <footer>
+            Taban Hesaplayıcısı <a href="../">lim10dev</a> tarafından yapıldı.<br>
+            <a target="_blank" href="https://github.com/lim10dev/lim10dev.github.io/tree/main/taban">Kaynak Kodu</a>
+        </footer>
+        <script src="main.js"></script>
+    </body>
+</html>
