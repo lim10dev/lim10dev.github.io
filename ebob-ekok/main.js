@@ -15,6 +15,7 @@ var carpanlarYazi = document.getElementById("carpanlarYazi");
 
 //belki devam ederim *2021 29 Eylül 9.08*
 //devam ediyorum *2021 15 Ekim 9.03*
+//bi hata vardı üşenip düzeltmeyi unuttuğum ona devam ediyorum *2022 15 Ocak 9.25*
 
 var sonucDefault = "Sayıları girdikten sonra hesapla tuşuna basın.";
 
@@ -82,7 +83,7 @@ hesapla.onclick = function () {
             txt = "Asal çarpan yok."
         } else {
             for (var i = 0; i < sadeceCarpanlar.length; i++) {
-                txt += `${sadeceCarpanlar[i]}${usseCevir(kacKereGecer(carpanlar[i], carpanlar))}${(i + 1 == sadeceCarpanlar.length ? "" : "×")}`
+                txt += `${sadeceCarpanlar[i]}${usseCevir(kacKereGecer(sadeceCarpanlar[i], carpanlar))}${(i + 1 == sadeceCarpanlar.length ? "" : "×")}`
             }
         }
         carpanlarYazi.innerText = txt;
