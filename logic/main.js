@@ -6,19 +6,19 @@ var degerDiv = document.getElementById("DegerlerDiv");
 var sonucHeader = document.getElementById("sonucHeader");
 var sonucYazili = document.getElementById("sonucYazili");
 var dil = document.getElementById("dil");
-var link = document.getElementsByTagName("a")[1];
+var link = document.getElementsByTagName("a");
 var logictitle = document.getElementById("logicTitle");
 var contactLink = document.getElementById("contactLink");
 var tablo = document.querySelector("table");
 var kaynakKod = document.getElementById("kaynakKod");
 
 // Semboller / Symbols
-var ve = "&";
-var veya = "|";
-var yada = "+";
-var ancak = "=";
-var ise = ">";
-var degil = "!";
+var ve = "∧";
+var veya = "∨";
+var yada = "⊻";
+var ancak = "⇔";
+var ise = "⇒";
+var degil = "'";
 
 var veButon = document.getElementById("ve");
 var veyaButon = document.getElementById("veya");
@@ -74,45 +74,21 @@ const dilEn = ['Logic Calculator', 'Type your logic...', 'Calculate', 'Calculate
 
 // Kod / Code
 
-veButon.onclick = function () {
-    giriseEkle(ve);
-}
-veyaButon.onclick = function () {
-    giriseEkle(veya);
-}
-yadaButon.onclick = function () {
-    giriseEkle(yada);
-}
-iseButon.onclick = function () {
-    giriseEkle(ise);
-}
-ancakButon.onclick = function () {
-    giriseEkle(ancak);
-}
-degilButon.onclick = function () {
-    giriseEkle(degil);
-}
-qButon.onclick = function () {
-    giriseEkle("q");
-}
-pButon.onclick = function () {
-    giriseEkle("p");
-}
-rButon.onclick = function () {
-    giriseEkle("r");
-}
-birButon.onclick = function () {
-    giriseEkle("1");
-}
-sifirButon.onclick = function () {
-    giriseEkle("0");
-}
-parantezAc.onclick = function () {
-    giriseEkle("(");
-}
-parantezKapat.onclick = function () {
-    giriseEkle(")");
-}
+veButon.onclick = veyaButon.onclick = yadaButon.onclick =
+    iseButon.onclick = ancakButon.onclick = degilButon.onclick =
+    pButon.onclick = qButon.onclick = rButon.onclick = birButon.onclick =
+    sifirButon.onclick = parantezAc.onclick = parantezKapat.onclick = (ev) => { 
+
+        var elementler = [veButon, veyaButon, yadaButon,
+            iseButon, ancakButon, degilButon,
+            pButon, qButon, rButon, birButon,
+            sifirButon, parantezAc, parantezKapat];
+        var elementYazilari = [ve, veya, yada,
+            ise, ancak, degil,
+            "p", "q", "r", "1",
+            "0", "(", ")"]
+        giriseEkle(elementYazilari[elementler.indexOf(ev.target)]);
+    }
 
 veButon.onmousedown = veyaButon.onmousedown = yadaButon.onmousedown =
     iseButon.onmousedown = ancakButon.onmousedown = degilButon.onmousedown =
@@ -133,6 +109,7 @@ function giriseEkle(txt = "") {
     }
     giris.oninput();
 }
+
 sil.onclick = function () {
     var girisTxt = giris.value;
     var girisSecimBaslangic = giris.selectionStart;
@@ -166,7 +143,8 @@ function degiskenKontrolEkle(hangiDegisken = 0) {
     dgsknElement.onchange = function () {
         degiskenDegerleri[hangiDegisken] = Number(dgsknElement.checked).toString();
         document.body.classList.remove("dogru", "yanlis", "hata");
-        link.classList.remove("dogru", "yanlis", "hata");
+        link[0].classList.remove("dogru", "yanlis", "hata");
+        link[1].classList.remove("dogru", "yanlis", "hata");
         sonucHeader.innerText = dilKelimeAl("durumDflt", dil.value);
         sonucYazili.innerText = "";
         contactLink.innerText = "";
@@ -214,7 +192,9 @@ giris.oninput = function () {
     giris.value = giris.value.toLowerCase();
     giris.setSelectionRange(girisIndex[0], girisIndex[1]);
     document.body.classList.remove("dogru", "yanlis", "hata");
-    link.classList.remove("dogru", "yanlis", "hata");
+    link[0].classList.remove("dogru", "yanlis", "hata");
+    link[1].classList.remove("dogru", "yanlis", "hata");
+    link[2].classList.remove("dogru", "yanlis", "hata");
     contactLink.innerText = "";
     sonucHeader.innerText = dilKelimeAl("durumDflt", dil.value);
     sonucYazili.innerText = "";
@@ -275,7 +255,9 @@ function hatayaGit() {
     contactLink.innerText = dilKelimeAl("iletisim", dil.value);
     sonucYazili.innerText = "";
     document.body.className = "hata";
-    link.className = "hata";
+    link[0].className = "hata";
+    link[1].className = "hata";
+    link[2].className = "hata";
 }
 
 hesapla.onclick = function () {
@@ -289,11 +271,15 @@ hesapla.onclick = function () {
             if (sonuc[0] == '1') {
                 sonucYazili.innerText = "✔️ | 1 | " + dilKelimeAl("durumDogru", dil.value);
                 document.body.className = "dogru";
-                link.className = "dogru";
+                link[0].className = "dogru";
+                link[1].className = "dogru";
+                link[2].className = "dogru";
             } else {
                 sonucYazili.innerText = "❌ | 0 | " + dilKelimeAl("durumYanlis", dil.value);
                 document.body.className = "yanlis";
-                link.className = "yanlis";
+                link[0].className = "yanlis";
+                link[1].className = "yanlis";
+                link[2].className = "yanlis";
             }
         }
     } else {
