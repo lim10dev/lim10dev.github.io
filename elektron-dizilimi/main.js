@@ -176,10 +176,13 @@ function dizilimHesapla(n) {
 }
 
 elektronSayiEl.oninput = function(){
+    normalDurumaGec();
+}
+
+elektronSayiEl.onchange = function() {
     var val = Number(elektronSayiEl.value);
     if(val < 1) { elektronSayiEl.value = 1; }
     if(val > 118) { elektronSayiEl.value = 118; }
-    normalDurumaGec();
 }
 
 document.onkeydown = function(ev) {
@@ -190,6 +193,8 @@ document.onkeydown = function(ev) {
 
 hesapla.onclick = function() {
     var elektron = Number(elektronSayiEl.value)
+    if(elektron < 1) { elektronSayiEl.value = elektron = 1; }
+    if(elektron > 118) { elektronSayiEl.value = elektron = 118; }
     var dizilim = dizilimHesapla(elektron)
     sonucHeader.innerText = `${elementler[elektron - 1]} için elektron dizilimi:`
     sonucYazi.innerText = dizilim.join(" ) ")

@@ -33,20 +33,9 @@ button:hover, input:hover, label:hover, input:focus, label:focus{
     cursor: pointer;
     color: black;
 }
-select{
-    background-color: var(--onplan);
-    font-weight: bold;
-    border: var(--onplan);
-    color: var(--arkaplan);
-    height: 30px;
-    min-width: 100px;
-    border-radius: 5%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin: 5px 5px 5px 0px;
-    height: 30px;
-    width: auto;
-    cursor: pointer;
+#resim{
+    height: 2rem;
+    float: left;
 }
 footer{
     position: fixed;
