@@ -57,7 +57,7 @@ var elementler = [
 "Gümüş",
 "Kadmiyum",
 "İndiyum",
-"Teneke",
+"Kalay",
 "Antimon",
 "Tellür",
 "İyot",
